@@ -8,7 +8,7 @@ class PointOfInterest {
   final String description;
   final double x;
   final double y;
-  
+
   PointOfInterest({
     required this.name,
     required this.description,
@@ -20,20 +20,21 @@ class PointOfInterest {
 class PaintingView extends StatefulWidget {
   const PaintingView({
     super.key,
-    required this.background,
     required this.text,
     required this.pointOfInterests,
+    required this.imageAsset,
   });
 
-  final MaterialColor background;
   final String text;
   final List<PointOfInterest> pointOfInterests;
+  final String imageAsset;
 
   @override
   State<PaintingView> createState() => _PaintingViewState();
 }
 
-class _PaintingViewState extends State<PaintingView> with TickerProviderStateMixin {
+class _PaintingViewState extends State<PaintingView>
+    with TickerProviderStateMixin {
   PointOfInterest? _selectedPoint;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -46,22 +47,14 @@ class _PaintingViewState extends State<PaintingView> with TickerProviderStateMix
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
-    
-    _scaleAnimation = Tween<double>(
-      begin: 0.8,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeOutBack,
-    ));
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
+    );
   }
 
   @override
@@ -96,37 +89,62 @@ class _PaintingViewState extends State<PaintingView> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final height = constraints.maxHeight;
-        
         return Stack(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width,
-              color: widget.background,
-              child: Center(
-                child: Text(
-                  widget.text,
-                  style: TextStyle(
-                    fontSize: 32.sc,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              width: constraints.maxWidth,
+              height: constraints.maxHeight,
+              color: Colors.black,
+              child: Image.asset(
+                widget.imageAsset,
+                fit: BoxFit.fitWidth,
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+              ),
+            ),
+
+            if (widget.text.isNotEmpty)
+              Positioned(
+                top: 20,
+                left: 20,
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    widget.text,
+                    style: TextStyle(
+                      fontSize: 24.sc,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
+
+            // Points of interest
             for (var pointOfInterest in widget.pointOfInterests)
               PointOfInterestView(
-                width: width,
+                width: constraints.maxWidth,
                 pointOfInterest: pointOfInterest,
-                height: height,
+                height: constraints.maxHeight,
                 onTap: () => _togglePointDetails(pointOfInterest),
               ),
+
+            // Details card
             if (_selectedPoint != null)
               AnimatedBuilder(
                 animation: _animationController,
                 builder: (context, child) {
-                  return DetailsCardView(point: _selectedPoint!, width: width, height: height, opacity: _fadeAnimation.value, scale: _scaleAnimation.value);
+                  return DetailsCardView(
+                    point: _selectedPoint!,
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight,
+                    opacity: _fadeAnimation.value,
+                    scale: _scaleAnimation.value,
+                  );
                 },
               ),
           ],

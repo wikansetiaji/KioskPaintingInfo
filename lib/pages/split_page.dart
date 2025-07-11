@@ -36,8 +36,8 @@ class _SplitPageState extends State<SplitPage> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: PaintingView(
-                  background: Colors.blue,
-                  text: "View B",
+                  imageAsset: 'assets/pieneman-painting.jpg',
+                  text: "Pieneman's Painting",
                   pointOfInterests: [
                     PointOfInterest(
                       name: "The Mysterious Garden Gateway",
@@ -48,13 +48,13 @@ class _SplitPageState extends State<SplitPage> {
                     PointOfInterest(
                       name: "The Weathered Stone Fountain",
                       description: "Built in 1847, this fountain was once the centerpiece of the estate's main courtyard. The intricate carvings depict scenes from classical mythology, including the story of Persephone and her journey between worlds.",
-                      x: 0.95,
-                      y: 0.95,
+                      x: 0.85,
+                      y: 0.91,
                     ),
                     PointOfInterest(
                       name: "The Artist's Studio Window",
                       description: "From this very window, the renowned painter Elena Martinez created her famous series of landscape paintings. The natural light streaming through this opening inspired some of the most celebrated works of the 19th century.",
-                      x: 0.95,
+                      x: 0.85,
                       y: 0.5,
                     ),
                     PointOfInterest(
@@ -73,8 +73,8 @@ class _SplitPageState extends State<SplitPage> {
                 alignment: Alignment.centerLeft,
                 widthFactor: _dragPosition,
                 child: PaintingView(
-                  background: Colors.red,
-                  text: "View A",
+                  imageAsset: 'assets/saleh-painting.jpg',
+                  text: "Saleh's Painting",
                   pointOfInterests: [
                     PointOfInterest(
                       name: "The Grand Ballroom Chandelier",

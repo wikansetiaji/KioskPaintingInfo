@@ -80,7 +80,7 @@ class DetailsCardView extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.sc),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withAlpha(100),
+                  color: Colors.white.withAlpha(100),
                   blurRadius: 8.sc,
                   offset: const Offset(0, 4),
                 ),
