@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
+import 'package:kiosk_painting_info/views/bottom_button_view.dart';
 import 'package:kiosk_painting_info/views/details_card_view.dart';
+import 'package:kiosk_painting_info/views/fun_facts_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
 
 class PointOfInterest {
@@ -17,17 +19,28 @@ class PointOfInterest {
   });
 }
 
+class FunFact {
+  final String title;
+  final String description;
+
+  FunFact({required this.title, required this.description});
+}
+
 class PaintingView extends StatefulWidget {
   const PaintingView({
     super.key,
     required this.text,
     required this.pointOfInterests,
     required this.imageAsset,
+    required this.uiOnRight,
+    required this.funFacts,
   });
 
   final String text;
   final List<PointOfInterest> pointOfInterests;
   final String imageAsset;
+  final bool uiOnRight;
+  final List<FunFact> funFacts;
 
   @override
   State<PaintingView> createState() => _PaintingViewState();
@@ -39,6 +52,7 @@ class _PaintingViewState extends State<PaintingView>
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
+  bool _isFunFactOpened = false;
 
   @override
   void initState() {
@@ -64,6 +78,10 @@ class _PaintingViewState extends State<PaintingView>
   }
 
   void _togglePointDetails(PointOfInterest? point) {
+    setState(() {
+      _isFunFactOpened = false;
+    });
+
     if (point == null) {
       if (_selectedPoint != null) {
         _animationController.reverse().then((_) {
@@ -115,27 +133,6 @@ class _PaintingViewState extends State<PaintingView>
               ),
             ),
 
-            if (widget.text.isNotEmpty)
-              Positioned(
-                top: 20,
-                left: 20,
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    widget.text,
-                    style: TextStyle(
-                      fontSize: 24.sc,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-
             // Points of interest
             for (var pointOfInterest in widget.pointOfInterests)
               PointOfInterestView(
@@ -160,6 +157,62 @@ class _PaintingViewState extends State<PaintingView>
                   );
                 },
               ),
+            Row(
+              children: [
+                if (widget.uiOnRight) Spacer(),
+                Container(
+                  padding: EdgeInsets.all(40.sc),
+                  child: Column(
+                    crossAxisAlignment:
+                        widget.uiOnRight
+                            ? CrossAxisAlignment.end
+                            : CrossAxisAlignment.start,
+                    spacing: 20.sc,
+                    children: [
+                      Spacer(),
+                      AnimatedCrossFade(
+                        duration: Duration(milliseconds: 250),
+                        crossFadeState:
+                            _isFunFactOpened
+                                ? CrossFadeState.showSecond
+                                : CrossFadeState.showFirst,
+                        firstChild: SizedBox(height: 0, width: 500.sc),
+                        secondChild: FunFactsView(
+                          name: widget.text,
+                          funFacts: widget.funFacts,
+                        ),
+                      ),
+                      Row(
+                        spacing: 20.sc,
+                        children: [
+                          BottomButtonView(
+                            text: "See Full Painting",
+                            icon: Icons.home_max,
+                            isOtherOpened: _isFunFactOpened,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (!_isFunFactOpened) {
+                                  _togglePointDetails(null);
+                                }
+                                _isFunFactOpened = !_isFunFactOpened;
+                              });
+                            },
+                            child: BottomButtonView(
+                              text: "Read Fun Facts",
+                              icon: Icons.info_outline,
+                              isOtherOpened: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                if (!widget.uiOnRight) Spacer(),
+              ],
+            ),
           ],
         );
       },

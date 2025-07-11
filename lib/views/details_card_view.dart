@@ -59,15 +59,15 @@ class DetailsCardView extends StatelessWidget {
     double top = positionY + 20.sc;
 
     // Adjust horizontal position
-    if (left + cardWidth > width) {
+    if (left + cardWidth > width - 40.sc) {
       left = positionX - cardWidth;
     }
     if (left - cardWidth / 2 < 0) {
       left = positionX;
     }
 
-    if (top + cardHeight > height) {
-      top = positionY - 60.sc - cardHeight;
+    if (top + cardHeight > height - 80.sc) {
+      top = positionY - 80.sc - cardHeight;
     }
 
     return Positioned(
@@ -89,10 +89,7 @@ class DetailsCardView extends StatelessWidget {
               children: [
                 Container(
                   width: width,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.sc,
-                    vertical: 8.sc,
-                  ),
+                  padding: EdgeInsets.all(12.sc),
                   decoration: BoxDecoration(
                     color: Color(0xFF4C4C4C),
                     borderRadius: BorderRadius.only(
@@ -106,14 +103,15 @@ class DetailsCardView extends StatelessWidget {
                         point.name,
                         style: TextStyle(
                           fontSize: 16.sc,
-                          fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
                       Spacer(),
-                      IconButton(
-                        onPressed: () => onClose(),
-                        icon: Icon(Icons.close, color: Colors.white),
+                      GestureDetector(
+                        onTap: onClose,
+                        child: Icon(
+                          Icons.close, color: Colors.white, size: 20.sc,
+                          ),
                       ),
                     ],
                   ),

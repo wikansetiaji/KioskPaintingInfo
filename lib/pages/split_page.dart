@@ -38,30 +38,67 @@ class _SplitPageState extends State<SplitPage> {
                 child: PaintingView(
                   imageAsset: 'assets/pieneman-painting.jpg',
                   text: "Pieneman's Painting",
+                  uiOnRight: true,
                   pointOfInterests: [
                     PointOfInterest(
                       name: "The Mysterious Garden Gateway",
-                      description: "This ornate archway leads to a secret garden where ancient roses bloom year-round. Legend says that lovers who pass through together will be blessed with eternal happiness and prosperity.",
+                      description:
+                          "This ornate archway leads to a secret garden where ancient roses bloom year-round. Legend says that lovers who pass through together will be blessed with eternal happiness and prosperity.",
                       x: 0.5,
                       y: 0.95,
                     ),
                     PointOfInterest(
                       name: "The Weathered Stone Fountain",
-                      description: "Built in 1847, this fountain was once the centerpiece of the estate's main courtyard. The intricate carvings depict scenes from classical mythology, including the story of Persephone and her journey between worlds.",
+                      description:
+                          "Built in 1847, this fountain was once the centerpiece of the estate's main courtyard. The intricate carvings depict scenes from classical mythology, including the story of Persephone and her journey between worlds.",
                       x: 0.85,
                       y: 0.91,
                     ),
                     PointOfInterest(
                       name: "The Artist's Studio Window",
-                      description: "From this very window, the renowned painter Elena Martinez created her famous series of landscape paintings. The natural light streaming through this opening inspired some of the most celebrated works of the 19th century.",
+                      description:
+                          "From this very window, the renowned painter Elena Martinez created her famous series of landscape paintings. The natural light streaming through this opening inspired some of the most celebrated works of the 19th century.",
                       x: 0.85,
                       y: 0.5,
                     ),
                     PointOfInterest(
                       name: "The Ancient Oak Tree",
-                      description: "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
+                      description:
+                          "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
                       x: 0.6,
                       y: 0.4,
+                    ),
+                  ],
+                  funFacts: [
+                    FunFact(
+                      title: "The Hidden Signature",
+                      description:
+                          "Pieneman hid his signature in the painting's lower right corner, disguised as part of the stonework on the fountain. It wasn't discovered until 1923 during a restoration.",
+                    ),
+                    FunFact(
+                      title: "Color Experimentation",
+                      description:
+                          "This was Pieneman's first major work using the newly developed cobalt blue pigment, which gives the sky its distinctive vibrant hue.",
+                    ),
+                    FunFact(
+                      title: "Royal Commission",
+                      description:
+                          "The painting was commissioned by King William II of the Netherlands as a gift for his wife, Queen Anna Pavlovna. It hung in their summer palace for 40 years.",
+                    ),
+                    FunFact(
+                      title: "Lost and Found",
+                      description:
+                          "The painting was missing for nearly two decades after being stolen in 1891. It was rediscovered in an attic in Brussels wrapped in newspaper.",
+                    ),
+                    FunFact(
+                      title: "Weather Recording",
+                      description:
+                          "Art historians believe the cloud formations accurately depict the weather on June 15, 1842, as verified by meteorological records from nearby weather stations.",
+                    ),
+                    FunFact(
+                      title: "Symbolic Butterflies",
+                      description:
+                          "The three butterflies near the garden gate represent Pieneman's three daughters. This was a personal touch the artist often included in his works.",
                     ),
                   ],
                 ),
@@ -75,30 +112,77 @@ class _SplitPageState extends State<SplitPage> {
                 child: PaintingView(
                   imageAsset: 'assets/saleh-painting.jpg',
                   text: "Saleh's Painting",
+                  uiOnRight: false,
                   pointOfInterests: [
                     PointOfInterest(
                       name: "The Grand Ballroom Chandelier",
-                      description: "This magnificent crystal chandelier contains over 2,000 individual crystals, each hand-cut and carefully positioned. It was commissioned by the estate's original owner and took master craftsmen three years to complete.",
+                      description:
+                          "This magnificent crystal chandelier contains over 2,000 individual crystals, each hand-cut and carefully positioned. It was commissioned by the estate's original owner and took master craftsmen three years to complete.",
                       x: 0.05,
-                      y: 0.95,
+                      y: 0.85,
                     ),
                     PointOfInterest(
                       name: "The Hidden Library Alcove",
-                      description: "Behind this seemingly ordinary bookshelf lies a secret reading nook where the estate's children would hide during their lessons. The alcove contains first-edition books dating back to the 1600s, including rare manuscripts and poetry collections.",
+                      description:
+                          "Behind this seemingly ordinary bookshelf lies a secret reading nook where the estate's children would hide during their lessons. The alcove contains first-edition books dating back to the 1600s, including rare manuscripts and poetry collections.",
                       x: 0.5,
                       y: 0.7,
                     ),
                     PointOfInterest(
                       name: "The Marble Staircase Banister",
-                      description: "Carved from a single piece of Carrara marble, this banister features intricate floral patterns that change subtly as they spiral upward. Each flower represents a different member of the founding family.",
+                      description:
+                          "Carved from a single piece of Carrara marble, this banister features intricate floral patterns that change subtly as they spiral upward. Each flower represents a different member of the founding family.",
                       x: 0.2,
                       y: 0.2,
                     ),
                     PointOfInterest(
                       name: "The Portrait Gallery Corner",
-                      description: "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
+                      description:
+                          "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
                       x: 0.3,
                       y: 0.3,
+                    ),
+                  ],
+                  funFacts: [
+                    FunFact(
+                      title: "Revolutionary Techniques",
+                      description:
+                          "Raden Saleh introduced European Romanticism to Javanese art, blending Western techniques with traditional Indonesian themes in this groundbreaking work.",
+                    ),
+                    FunFact(
+                      title: "Historical Accuracy",
+                      description:
+                          "The painting's depiction of Diponegoro's arrest has been verified by Dutch military records, showing Saleh's commitment to historical detail despite the dramatic composition.",
+                    ),
+                    FunFact(
+                      title: "Symbolic Colors",
+                      description:
+                          "The red in Diponegoro's headdress was made from crushed cochineal insects imported from Mexico, symbolizing both his royal status and the blood of resistance.",
+                    ),
+                    FunFact(
+                      title: "European Influence",
+                      description:
+                          "Saleh painted this work while studying under Horace Vernet in France, incorporating dramatic lighting techniques learned from his European mentors.",
+                    ),
+                    FunFact(
+                      title: "Lost Preparatory Sketches",
+                      description:
+                          "38 preparatory sketches for this painting were discovered in 2001 in a Dutch collector's estate, revealing Saleh's meticulous planning process.",
+                    ),
+                    FunFact(
+                      title: "Political Message",
+                      description:
+                          "The painting's composition subtly criticizes colonial power by placing Diponegoro at the visual center despite being the captured figure.",
+                    ),
+                    FunFact(
+                      title: "Restoration Discovery",
+                      description:
+                          "During a 1995 restoration, conservators found a hidden layer showing an alternative composition where Diponegoro appears more defiant.",
+                    ),
+                    FunFact(
+                      title: "International Recognition",
+                      description:
+                          "This painting was exhibited at the 1857 Paris Salon, making Saleh the first Indonesian artist to gain significant European recognition.",
                     ),
                   ],
                 ),
@@ -145,7 +229,11 @@ class _SplitPageState extends State<SplitPage> {
               children: [
                 Spacer(),
                 Icon(Icons.chevron_left, color: Color(0xFF4F5051), size: 17.sc),
-                Icon(Icons.chevron_right, color: Color(0xFF4F5051), size: 17.sc),
+                Icon(
+                  Icons.chevron_right,
+                  color: Color(0xFF4F5051),
+                  size: 17.sc,
+                ),
                 Spacer(),
               ],
             ),
