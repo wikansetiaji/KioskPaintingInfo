@@ -82,13 +82,6 @@ class DetailsCardView extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFF2C2B2B),
               borderRadius: BorderRadius.circular(8.sc),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white.withAlpha(100),
-                  blurRadius: 8.sc,
-                  offset: const Offset(0, 4),
-                ),
-              ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
