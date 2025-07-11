@@ -9,8 +9,70 @@ class SplitPage extends StatefulWidget {
   State<SplitPage> createState() => _SplitPageState();
 }
 
-class _SplitPageState extends State<SplitPage> {
+class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   double _dragPosition = 0.5;
+  String? _selectedPainting;
+  late AnimationController _modalAnimationController;
+  late AnimationController _scaleAnimationController;
+  late Animation<double> _modalAnimation;
+  late Animation<double> _scaleAnimation;
+  
+  // Transform controller for zoom and pan
+  final TransformationController _transformationController = TransformationController();
+
+  @override
+  void initState() {
+    super.initState();
+    
+    // Modal fade animation
+    _modalAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _modalAnimation = CurvedAnimation(
+      parent: _modalAnimationController,
+      curve: Curves.easeInOut,
+    );
+    
+    // Scale animation for the painting
+    _scaleAnimationController = AnimationController(
+      duration: const Duration(milliseconds: 400),
+      vsync: this,
+    );
+    _scaleAnimation = CurvedAnimation(
+      parent: _scaleAnimationController,
+      curve: Curves.elasticOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _modalAnimationController.dispose();
+    _scaleAnimationController.dispose();
+    _transformationController.dispose();
+    super.dispose();
+  }
+
+  void _showPainting(String? painting) {
+    if (painting != null) {
+      setState(() {
+        _selectedPainting = painting;
+      });
+      _modalAnimationController.forward();
+      _scaleAnimationController.forward();
+      // Reset transform when showing new painting
+      _transformationController.value = Matrix4.identity();
+    }
+  }
+
+  void _hidePainting() {
+    _modalAnimationController.reverse().then((_) {
+      setState(() {
+        _selectedPainting = null;
+      });
+      _scaleAnimationController.reset();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +83,9 @@ class _SplitPageState extends State<SplitPage> {
       body: GestureDetector(
         onHorizontalDragUpdate: (details) {
           setState(() {
+            if (_selectedPainting != null) {
+              return;
+            }
             _dragPosition += details.delta.dx / screenWidth;
             _dragPosition = _dragPosition.clamp(0.0, 1.0);
           });
@@ -101,6 +166,7 @@ class _SplitPageState extends State<SplitPage> {
                           "The three butterflies near the garden gate represent Pieneman's three daughters. This was a personal touch the artist often included in his works.",
                     ),
                   ],
+                  onSelectPainting: _showPainting,
                 ),
               ),
             ),
@@ -185,11 +251,95 @@ class _SplitPageState extends State<SplitPage> {
                           "This painting was exhibited at the 1857 Paris Salon, making Saleh the first Indonesian artist to gain significant European recognition.",
                     ),
                   ],
+                  onSelectPainting: _showPainting,
                 ),
               ),
             ),
 
             vwSlider(handleX),
+
+            // Animated modal overlay
+            if (_selectedPainting != null)
+              AnimatedBuilder(
+                animation: _modalAnimation,
+                builder: (context, child) {
+                  return GestureDetector(
+                    onTap: _hidePainting,
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.black.withOpacity(0.8 * _modalAnimation.value),
+                    ),
+                  );
+                },
+              ),
+
+            // Animated zoomable painting
+            if (_selectedPainting != null)
+              AnimatedBuilder(
+                animation: Listenable.merge([_modalAnimation, _scaleAnimation]),
+                builder: (context, child) {
+                  return Transform.scale(
+                    scale: _scaleAnimation.value,
+                    child: Opacity(
+                      opacity: _modalAnimation.value,
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        padding: EdgeInsets.all(100.sc),
+                        child: Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color(0xFFFFD700),
+                                width: 22.sc,
+                              ),
+                              borderRadius: BorderRadius.circular(12.sc),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  blurRadius: 20.sc,
+                                  offset: Offset(0, 10.sc),
+                                ),
+                                BoxShadow(
+                                  color: const Color(0xFFFFD700).withOpacity(0.3),
+                                  blurRadius: 40.sc,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4.sc),
+                              child: GestureDetector(
+                                onDoubleTap: () {
+                                  if (_transformationController.value.getMaxScaleOnAxis() > 1.1) {
+                                    _transformationController.value = Matrix4.identity();
+                                  } else {
+                                    _transformationController.value = Matrix4.identity()..scale(2.0)..translate(
+                                      -MediaQuery.of(context).size.width / 4,
+                                      -MediaQuery.of(context).size.height / 4,
+                                    );
+                                  }
+                                },
+                                child: InteractiveViewer(
+                                  transformationController: _transformationController,
+                                  minScale: 0.5,
+                                  maxScale: 4.0,
+                                  constrained: true,
+                                  child: Image.asset(
+                                    _selectedPainting!,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
           ],
         ),
       ),

@@ -34,6 +34,7 @@ class PaintingView extends StatefulWidget {
     required this.imageAsset,
     required this.uiOnRight,
     required this.funFacts,
+    required this.onSelectPainting
   });
 
   final String text;
@@ -41,6 +42,7 @@ class PaintingView extends StatefulWidget {
   final String imageAsset;
   final bool uiOnRight;
   final List<FunFact> funFacts;
+  final Function(String) onSelectPainting;
 
   @override
   State<PaintingView> createState() => _PaintingViewState();
@@ -185,10 +187,18 @@ class _PaintingViewState extends State<PaintingView>
                       Row(
                         spacing: 20.sc,
                         children: [
-                          BottomButtonView(
-                            text: "See Full Painting",
-                            icon: Icons.home_max,
-                            isOtherOpened: _isFunFactOpened,
+                          GestureDetector(
+                            onTap: () { 
+                              setState(() {
+                                _togglePointDetails(null);
+                              });
+                              widget.onSelectPainting(widget.imageAsset);
+                            },
+                            child: BottomButtonView(
+                              text: "See Full Painting",
+                              icon: Icons.home_max,
+                              isOtherOpened: _isFunFactOpened,
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
