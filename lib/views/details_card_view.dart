@@ -10,6 +10,7 @@ class DetailsCardView extends StatelessWidget {
     required this.height,
     required this.opacity,
     required this.scale,
+    required this.onClose,
   });
 
   final PointOfInterest point;
@@ -17,27 +18,25 @@ class DetailsCardView extends StatelessWidget {
   final double height;
   final double opacity;
   final double scale;
+  final VoidCallback onClose;
 
   @override
   Widget build(BuildContext context) {
     final positionX = width * point.x;
     final positionY = height * point.y;
-    final cardWidth = 300.0.sc;
-    
+    final cardWidth = 400.0.sc;
+
     // Calculate dynamic height based on content
     final titlePainter = TextPainter(
       text: TextSpan(
         text: point.name,
-        style: TextStyle(
-          fontSize: 16.sc,
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontSize: 16.sc, fontWeight: FontWeight.bold),
       ),
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
     titlePainter.layout(maxWidth: cardWidth - 24.sc); // Account for padding
-    
+
     final descriptionPainter = TextPainter(
       text: TextSpan(
         text: point.description,
@@ -46,10 +45,16 @@ class DetailsCardView extends StatelessWidget {
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
-    descriptionPainter.layout(maxWidth: cardWidth - 24.sc); // Account for padding
-    
-    final cardHeight = titlePainter.height + 8.sc + descriptionPainter.height + 24.sc; // titleHeight + spacing + descHeight + padding
-    
+    descriptionPainter.layout(
+      maxWidth: cardWidth - 24.sc,
+    ); // Account for padding
+
+    final cardHeight =
+        titlePainter.height +
+        8.sc +
+        descriptionPainter.height +
+        24.sc; // titleHeight + spacing + descHeight + padding
+
     double left = positionX - cardWidth / 2;
     double top = positionY + 20.sc;
 
@@ -60,7 +65,7 @@ class DetailsCardView extends StatelessWidget {
     if (left - cardWidth / 2 < 0) {
       left = positionX;
     }
-    
+
     if (top + cardHeight > height) {
       top = positionY - 60.sc - cardHeight;
     }
@@ -74,9 +79,8 @@ class DetailsCardView extends StatelessWidget {
           opacity: opacity,
           child: Container(
             width: cardWidth,
-            padding: EdgeInsets.all(12.sc),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xFF2C2B2B),
               borderRadius: BorderRadius.circular(8.sc),
               boxShadow: [
                 BoxShadow(
@@ -90,17 +94,43 @@ class DetailsCardView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  point.name,
-                  style: TextStyle(
-                    fontSize: 16.sc,
-                    fontWeight: FontWeight.bold,
+                Container(
+                  width: width,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.sc,
+                    vertical: 8.sc,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF4C4C4C),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.sc),
+                      topRight: Radius.circular(8.sc),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        point.name,
+                        style: TextStyle(
+                          fontSize: 16.sc,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Spacer(),
+                      IconButton(
+                        onPressed: () => onClose(),
+                        icon: Icon(Icons.close, color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 8.sc),
-                Text(
-                  point.description,
-                  style: TextStyle(fontSize: 14.sc),
+                Container(
+                  padding: EdgeInsets.all(12.sc),
+                  child: Text(
+                    point.description,
+                    style: TextStyle(fontSize: 14.sc, color: Colors.white),
+                  ),
                 ),
               ],
             ),

@@ -63,8 +63,17 @@ class _PaintingViewState extends State<PaintingView>
     super.dispose();
   }
 
-  void _togglePointDetails(PointOfInterest point) {
-    if (_selectedPoint == point) {
+  void _togglePointDetails(PointOfInterest? point) {
+    if (point == null) {
+      if (_selectedPoint != null) {
+        _animationController.reverse().then((_) {
+          setState(() {
+            _selectedPoint = null;
+          });
+        });
+      }
+      return;
+    } else if (_selectedPoint == point) {
       _animationController.reverse().then((_) {
         setState(() {
           _selectedPoint = null;
@@ -91,15 +100,18 @@ class _PaintingViewState extends State<PaintingView>
       builder: (context, constraints) {
         return Stack(
           children: [
-            Container(
-              width: constraints.maxWidth,
-              height: constraints.maxHeight,
-              color: Colors.black,
-              child: Image.asset(
-                widget.imageAsset,
-                fit: BoxFit.fitWidth,
+            GestureDetector(
+              onTap: () => _togglePointDetails(null),
+              child: Container(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
+                color: Colors.black,
+                child: Image.asset(
+                  widget.imageAsset,
+                  fit: BoxFit.fitWidth,
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                ),
               ),
             ),
 
@@ -144,6 +156,7 @@ class _PaintingViewState extends State<PaintingView>
                     height: constraints.maxHeight,
                     opacity: _fadeAnimation.value,
                     scale: _scaleAnimation.value,
+                    onClose: () => _togglePointDetails(null),
                   );
                 },
               ),
