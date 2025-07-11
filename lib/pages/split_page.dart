@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
 
 class SplitPage extends StatefulWidget {
@@ -113,38 +114,38 @@ class _SplitPageState extends State<SplitPage> {
 
   Positioned vwSlider(double handleX) {
     return Positioned(
-      left: handleX - 25,
+      left: handleX - 25.sc,
       top: 0,
       bottom: 0,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Container(width: 16, color: Color(0xFF4F5051)),
+          Container(width: 16.sc, color: Color(0xFF4F5051)),
           Container(
-            width: 50,
-            height: 50,
+            width: 50.sc,
+            height: 50.sc,
             decoration: BoxDecoration(
               color: Color(0xFF4F5051),
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(25.sc),
             ),
           ),
           Container(
-            width: 30,
-            height: 30,
+            width: 30.sc,
+            height: 30.sc,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.sc),
             ),
           ),
           SizedBox(
-            width: 50,
+            width: 50.sc,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Spacer(),
-                Icon(Icons.chevron_left, color: Color(0xFF4F5051), size: 17),
-                Icon(Icons.chevron_right, color: Color(0xFF4F5051), size: 17),
+                Icon(Icons.chevron_left, color: Color(0xFF4F5051), size: 17.sc),
+                Icon(Icons.chevron_right, color: Color(0xFF4F5051), size: 17.sc),
                 Spacer(),
               ],
             ),

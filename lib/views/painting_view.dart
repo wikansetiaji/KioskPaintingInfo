@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/details_card_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
 
@@ -107,7 +108,7 @@ class _PaintingViewState extends State<PaintingView> with TickerProviderStateMix
                 child: Text(
                   widget.text,
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 32.sc,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),

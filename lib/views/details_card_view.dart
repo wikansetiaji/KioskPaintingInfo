@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
 
 class DetailsCardView extends StatelessWidget {
@@ -21,36 +22,36 @@ class DetailsCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     final positionX = width * point.x;
     final positionY = height * point.y;
-    final cardWidth = 300.0;
+    final cardWidth = 300.0.sc;
     
     // Calculate dynamic height based on content
     final titlePainter = TextPainter(
       text: TextSpan(
         text: point.name,
-        style: const TextStyle(
-          fontSize: 16,
+        style: TextStyle(
+          fontSize: 16.sc,
           fontWeight: FontWeight.bold,
         ),
       ),
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
-    titlePainter.layout(maxWidth: cardWidth - 24); // Account for padding
+    titlePainter.layout(maxWidth: cardWidth - 24.sc); // Account for padding
     
     final descriptionPainter = TextPainter(
       text: TextSpan(
         text: point.description,
-        style: const TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 14.sc),
       ),
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
-    descriptionPainter.layout(maxWidth: cardWidth - 24); // Account for padding
+    descriptionPainter.layout(maxWidth: cardWidth - 24.sc); // Account for padding
     
-    final cardHeight = titlePainter.height + 8 + descriptionPainter.height + 24; // titleHeight + spacing + descHeight + padding
+    final cardHeight = titlePainter.height + 8.sc + descriptionPainter.height + 24.sc; // titleHeight + spacing + descHeight + padding
     
     double left = positionX - cardWidth / 2;
-    double top = positionY + 20;
+    double top = positionY + 20.sc;
 
     // Adjust horizontal position
     if (left + cardWidth > width) {
@@ -61,7 +62,7 @@ class DetailsCardView extends StatelessWidget {
     }
     
     if (top + cardHeight > height) {
-      top = positionY - 60 - cardHeight;
+      top = positionY - 60.sc - cardHeight;
     }
 
     return Positioned(
@@ -73,14 +74,14 @@ class DetailsCardView extends StatelessWidget {
           opacity: opacity,
           child: Container(
             width: cardWidth,
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12.sc),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.sc),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withAlpha(100),
-                  blurRadius: 8,
+                  blurRadius: 8.sc,
                   offset: const Offset(0, 4),
                 ),
               ],
@@ -91,15 +92,15 @@ class DetailsCardView extends StatelessWidget {
               children: [
                 Text(
                   point.name,
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sc,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8.sc),
                 Text(
                   point.description,
-                  style: const TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 14.sc),
                 ),
               ],
             ),

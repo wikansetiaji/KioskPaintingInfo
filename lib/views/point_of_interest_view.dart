@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
 
 class PointOfInterestView extends StatefulWidget {
@@ -47,8 +48,8 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.width * widget.pointOfInterest.x - 30,
-      top: widget.height * widget.pointOfInterest.y - 30,
+      left: widget.width * widget.pointOfInterest.x - 30.sc,
+      top: widget.height * widget.pointOfInterest.y - 30.sc,
       child: GestureDetector(
         onTap: widget.onTap,
         child: AnimatedBuilder(
@@ -60,15 +61,15 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
                 Transform.scale(
                   scale: _pulseAnimation.value,
                   child: Container(
-                    width: 40,
-                    height: 40,
+                    width: 40.sc,
+                    height: 40.sc,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white.withAlpha(80),
                     ),
                   ),
                 ),
-                const CircleAvatar(radius: 10, backgroundColor: Colors.white),
+                CircleAvatar(radius: 10.sc, backgroundColor: Colors.white),
               ],
             );
           },
