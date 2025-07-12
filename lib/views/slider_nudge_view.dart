@@ -90,7 +90,7 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
                       fontSize: 40.sc,
                       color: const Color(0xFF212121),
                       fontFamily: "Inter",
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.normal
                     ),
                   ),
                 ],
