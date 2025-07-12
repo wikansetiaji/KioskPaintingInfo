@@ -223,7 +223,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       ),
                       x: 0.6,
                       y: 0.4,
-                      showNudge: true,
+                      showNudge: false,
                     ),
                   ],
                   funFacts: [

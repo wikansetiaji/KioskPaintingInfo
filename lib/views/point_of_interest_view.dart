@@ -65,7 +65,7 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
                     height: 100.sc,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withAlpha(80),
+                      color: Colors.white.withAlpha(120),
                     ),
                   ),
                 ),

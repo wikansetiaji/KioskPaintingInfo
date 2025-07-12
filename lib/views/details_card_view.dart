@@ -99,7 +99,7 @@ class DetailsCardView extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        point.name.text(context),
+                        point.name.text(context).toUpperCase(),
                         style: TextStyle(
                           fontSize: 36.sc,
                           color: Colors.white,
