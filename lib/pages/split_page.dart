@@ -139,6 +139,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                           "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
                       x: 0.6,
                       y: 0.4,
+                      showNudge: true
                     ),
                   ],
                   funFacts: [
@@ -218,6 +219,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                           "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
                       x: 0.3,
                       y: 0.3,
+                      showNudge: true
                     ),
                   ],
                   funFacts: [

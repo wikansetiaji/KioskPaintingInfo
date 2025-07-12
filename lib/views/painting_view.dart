@@ -5,6 +5,7 @@ import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/bottom_button_view.dart';
 import 'package:kiosk_painting_info/views/details_card_view.dart';
 import 'package:kiosk_painting_info/views/fun_facts_view.dart';
+import 'package:kiosk_painting_info/views/poi_nudge_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
 import 'package:kiosk_painting_info/services/event_bus.dart';
 
@@ -14,6 +15,7 @@ class PointOfInterest {
   final String description;
   final double x;
   final double y;
+  bool showNudge = false;
 
   PointOfInterest({
     required this.id,
@@ -21,6 +23,7 @@ class PointOfInterest {
     required this.description,
     required this.x,
     required this.y,
+    this.showNudge = false,
   });
 }
 
@@ -61,6 +64,8 @@ class _PaintingViewState extends State<PaintingView>
   late Animation<double> _scaleAnimation;
   bool _isFunFactOpened = false;
   late StreamSubscription _subscription;
+  bool _isNudgeShown = true;
+  Timer? _nudgeTimer;
 
   @override
   void initState() {
@@ -68,6 +73,22 @@ class _PaintingViewState extends State<PaintingView>
 
     _subscription = EventBus.stream.listen((event) {
       setState(() {
+        if (_nudgeTimer?.isActive ?? false) {
+          _nudgeTimer!.cancel();
+        }
+
+        if (event != "") {
+          _isNudgeShown = false;
+        } else {
+          _nudgeTimer = Timer(Duration(seconds: 30), () {
+            if (mounted) {
+              setState(() {
+                _isNudgeShown = true;
+              });
+            }
+          });
+        }
+
         if (event == "") {
           _togglePointDetails(null);
           return;
@@ -98,6 +119,7 @@ class _PaintingViewState extends State<PaintingView>
   void dispose() {
     _animationController.dispose();
     _subscription.cancel();
+    _nudgeTimer?.cancel();
     super.dispose();
   }
 
@@ -143,7 +165,10 @@ class _PaintingViewState extends State<PaintingView>
         return Stack(
           children: [
             GestureDetector(
-              onTap: () => _togglePointDetails(null),
+              onTap: () {
+                _togglePointDetails(null);
+                EventBus.send("");
+              },
               child: Container(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
@@ -166,12 +191,21 @@ class _PaintingViewState extends State<PaintingView>
                 onTap: () {
                   if (_selectedPoint?.id == pointOfInterest.id) {
                     _togglePointDetails(null);
+                    EventBus.send("");
                     return;
                   }
                   _togglePointDetails(pointOfInterest);
                   EventBus.send(pointOfInterest.id);
                 },
               ),
+
+            for (var pointOfInterest in widget.pointOfInterests)
+              if (pointOfInterest.showNudge && _isNudgeShown)
+                POINudgeView(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  selectedPoint: pointOfInterest,
+                ),
 
             // Details card
             if (_selectedPoint != null)
@@ -184,10 +218,14 @@ class _PaintingViewState extends State<PaintingView>
                     height: constraints.maxHeight,
                     opacity: _fadeAnimation.value,
                     scale: _scaleAnimation.value,
-                    onClose: () => _togglePointDetails(null),
+                    onClose: () {
+                      _togglePointDetails(null);
+                      EventBus.send("");
+                    },
                   );
                 },
               ),
+
             Row(
               children: [
                 if (widget.uiOnRight) Spacer(),
@@ -218,9 +256,8 @@ class _PaintingViewState extends State<PaintingView>
                         children: [
                           GestureDetector(
                             onTap: () {
-                              setState(() {
-                                _togglePointDetails(null);
-                              });
+                              _togglePointDetails(null);
+                              EventBus.send("");
                               widget.onSelectPainting(widget.imageAsset);
                             },
                             child: BottomButtonView(
