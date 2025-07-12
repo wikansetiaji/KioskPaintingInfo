@@ -227,96 +227,114 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "The Hidden Signature",
-                          AppLanguage.id: "Tanda Tangan Tersembunyi",
+                          AppLanguage.en:
+                              "A European Perspective on the Java War",
+                          AppLanguage.id:
+                              "Perspektif Eropa terhadap Perang Jawa",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "Pieneman hid his signature in the painting's lower right corner, disguised as part of the stonework on the fountain. It wasn't discovered until 1923 during a restoration.",
+                              "Nicolaas Pieneman never visited the Dutch East Indies, yet he was commissioned by King Willem III to commemorate the 'end' of the Java War through this iconic painting.",
                           AppLanguage.id:
-                              "Pieneman menyembunyikan tanda tangannya di sudut kanan bawah lukisan, disamarkan sebagai bagian dari pahatan batu pada air mancur. Tidak ditemukan hingga tahun 1923 selama restorasi.",
+                              "Nicolaas Pieneman tidak pernah mengunjungi Hindia Belanda, namun ia mendapat komisi dari Raja Willem III untuk memperingati 'berakhirnya' Perang Jawa melalui lukisan ikonik ini.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Color Experimentation",
-                          AppLanguage.id: "Eksperimen Warna",
+                          AppLanguage.en: "An Honorable Surrender",
+                          AppLanguage.id: "Penyerahan yang Terhormat",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "This was Pieneman's first major work using the newly developed cobalt blue pigment, which gives the sky its distinctive vibrant hue.",
+                              "In contrast to later interpretations, Pieneman depicted Diponegoro as calmly and honorably surrendering — a sign of mutual respect and 'civilized diplomacy' according to 19th-century Dutch ideals.",
                           AppLanguage.id:
-                              "Ini adalah karya besar pertama Pieneman yang menggunakan pigmen biru kobalt yang baru dikembangkan, yang memberikan langit warna cerah khasnya.",
+                              "Berbeda dengan interpretasi masa kini, Pieneman menggambarkan Pangeran Diponegoro menyerah dengan tenang dan terhormat — mencerminkan rasa saling menghormati dan 'diplomasi beradab' menurut pandangan Belanda abad ke-19.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Royal Commission",
+                          AppLanguage.en: "Propaganda with Paint",
+                          AppLanguage.id: "Propaganda Lewat Kuas",
+                        },
+                      ),
+                      description: TranslatedString(
+                        strings: {
+                          AppLanguage.en:
+                              "The painting was used to justify Dutch colonial authority, portraying De Kock as a composed and firm military leader who peacefully resolved rebellion.",
+                          AppLanguage.id:
+                              "Lukisan ini digunakan untuk membenarkan otoritas kolonial Belanda, dengan menampilkan De Kock sebagai pemimpin militer yang tenang dan tegas dalam meredam pemberontakan secara damai.",
+                        },
+                      ),
+                    ),
+                    FunFact(
+                      title: TranslatedString(
+                        strings: {
+                          AppLanguage.en: "Painted 22 Years After the Event",
+                          AppLanguage.id: "Dilukis 22 Tahun Setelah Peristiwa",
+                        },
+                      ),
+                      description: TranslatedString(
+                        strings: {
+                          AppLanguage.en:
+                              "Completed in 1857, the painting was created over two decades after the actual arrest of Diponegoro in 1830 — based entirely on second-hand sources and imagination.",
+                          AppLanguage.id:
+                              "Diselesaikan pada tahun 1857, lukisan ini dibuat lebih dari dua dekade setelah penangkapan asli Pangeran Diponegoro pada tahun 1830 — seluruhnya berdasarkan sumber sekunder dan imajinasi.",
+                        },
+                      ),
+                    ),
+                    FunFact(
+                      title: TranslatedString(
+                        strings: {
+                          AppLanguage.en: "Visual Symbolism of Control",
+                          AppLanguage.id: "Simbol Visual Kekuasaan",
+                        },
+                      ),
+                      description: TranslatedString(
+                        strings: {
+                          AppLanguage.en:
+                              "Diponegoro is shown standing with lowered posture, while De Kock sits confidently — a clear symbol of power dynamics, meant to show Dutch control over the native elite.",
+                          AppLanguage.id:
+                              "Diponegoro digambarkan berdiri dengan postur merunduk, sementara De Kock duduk dengan percaya diri — simbol yang jelas dari dinamika kekuasaan, dimaksudkan untuk menunjukkan dominasi Belanda atas elite pribumi.",
+                        },
+                      ),
+                    ),
+                    FunFact(
+                      title: TranslatedString(
+                        strings: {
+                          AppLanguage.en: "A Royal Commission",
                           AppLanguage.id: "Komisi Kerajaan",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "The painting was commissioned by King William II of the Netherlands as a gift for his wife, Queen Anna Pavlovna. It hung in their summer palace for 40 years.",
+                              "The painting was commissioned by the Dutch monarchy as part of a series of colonial representations to glorify the Netherlands' overseas governance.",
                           AppLanguage.id:
-                              "Lukisan ini dipesan oleh Raja William II dari Belanda sebagai hadiah untuk istrinya, Ratu Anna Pavlovna. Lukisan ini tergantung di istana musim panas mereka selama 40 tahun.",
+                              "Lukisan ini dipesan oleh pihak kerajaan Belanda sebagai bagian dari rangkaian representasi kolonial untuk mengagungkan kekuasaan Belanda di wilayah jajahan.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Lost and Found",
-                          AppLanguage.id: "Hilang dan Ditemukan",
+                          AppLanguage.en: "Displayed at Paleis Noordeinde",
+                          AppLanguage.id: "Dipajang di Paleis Noordeinde",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "The painting was missing for nearly two decades after being stolen in 1891. It was rediscovered in an attic in Brussels wrapped in newspaper.",
+                              "Originally hung at the Royal Palace in The Hague, the painting was meant to impress visiting dignitaries and reflect the supposed 'success' of the Dutch civilizing mission.",
                           AppLanguage.id:
-                              "Lukisan ini hilang selama hampir dua dekade setelah dicuri pada tahun 1891. Ditemukan kembali di loteng di Brussels yang dibungkus koran.",
-                        },
-                      ),
-                    ),
-                    FunFact(
-                      title: TranslatedString(
-                        strings: {
-                          AppLanguage.en: "Weather Recording",
-                          AppLanguage.id: "Rekaman Cuaca",
-                        },
-                      ),
-                      description: TranslatedString(
-                        strings: {
-                          AppLanguage.en:
-                              "Art historians believe the cloud formations accurately depict the weather on June 15, 1842, as verified by meteorological records from nearby weather stations.",
-                          AppLanguage.id:
-                              "Sejarawan seni percaya bahwa formasi awan secara akurat menggambarkan cuaca pada 15 Juni 1842, seperti yang diverifikasi oleh catatan meteorologi dari stasiun cuaca terdekat.",
-                        },
-                      ),
-                    ),
-                    FunFact(
-                      title: TranslatedString(
-                        strings: {
-                          AppLanguage.en: "Symbolic Butterflies",
-                          AppLanguage.id: "Kupu-kupu Simbolis",
-                        },
-                      ),
-                      description: TranslatedString(
-                        strings: {
-                          AppLanguage.en:
-                              "The three butterflies near the garden gate represent Pieneman's three daughters. This was a personal touch the artist often included in his works.",
-                          AppLanguage.id:
-                              "Tiga kupu-kupu di dekat gerbang taman mewakili tiga putri Pieneman. Ini adalah sentuhan pribadi yang sering disertakan seniman dalam karyanya.",
+                              "Awalnya dipajang di Istana Kerajaan Den Haag, lukisan ini dimaksudkan untuk mengesankan para tamu kehormatan dan mencerminkan apa yang disebut sebagai 'keberhasilan' misi peradaban Belanda.",
                         },
                       ),
                     ),
@@ -422,128 +440,101 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Revolutionary Techniques",
-                          AppLanguage.id: "Teknik Revolusioner",
+                          AppLanguage.en:
+                              "The Masterpiece of a Maestro: Raden Saleh",
+                          AppLanguage.id: "Karya Sang Maestro: Raden Saleh",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "Raden Saleh introduced European Romanticism to Javanese art, blending Western techniques with traditional Indonesian themes in this groundbreaking work.",
+                              "The painting 'The Arrest of Prince Diponegoro' was created by Raden Saleh in 1857, shortly after his return from Europe. It has become a significant symbol in the history of Indonesian fine art.",
                           AppLanguage.id:
-                              "Raden Saleh memperkenalkan Romantisme Eropa ke seni Jawa, memadukan teknik Barat dengan tema tradisional Indonesia dalam karya inovatif ini.",
+                              "Lukisan 'Penangkapan Pangeran Diponegoro' dibuat oleh Raden Saleh pada tahun 1857, usai kepulangannya dari Eropa. Karya ini menjadi simbol penting dalam sejarah seni lukis Indonesia.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Historical Accuracy",
-                          AppLanguage.id: "Akurasi Historis",
+                          AppLanguage.en: "Romanticism in Every Stroke",
+                          AppLanguage.id: "Romantisme dalam Goresan",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "The painting's depiction of Diponegoro's arrest has been verified by Dutch military records, showing Saleh's commitment to historical detail despite the dramatic composition.",
+                              "This artwork emphasizes emotional and dramatic tones characteristic of European Romanticism, bringing the historical moment to life and evoking deep emotional responses from viewers.",
                           AppLanguage.id:
-                              "Penggambaran lukisan tentang penangkapan Diponegoro telah diverifikasi oleh catatan militer Belanda, menunjukkan komitmen Saleh terhadap detail sejarah meskipun komposisinya dramatis.",
+                              "Gaya lukisan ini menonjolkan nuansa emosional dan dramatis khas Romantisme Eropa, menjadikan peristiwa sejarah terasa hidup dan menggugah perasaan penonton.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Symbolic Colors",
-                          AppLanguage.id: "Warna Simbolis",
+                          AppLanguage.en:
+                              "A Response: Countering Pieneman's Narrative",
+                          AppLanguage.id:
+                              "Sebuah Tanggapan: Kontra Narasi Lukisan Pieneman",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "The red in Diponegoro's headdress was made from crushed cochineal insects imported from Mexico, symbolizing both his royal status and the blood of resistance.",
+                              "Raden Saleh painted this piece as a direct response to Nicolaas Pieneman's depiction. While Pieneman showed Prince Diponegoro surrendering, Saleh highlighted the prince's courage and dignity.",
                           AppLanguage.id:
-                              "Warna merah pada penutup kepala Diponegoro terbuat dari serangga cochineal yang diimpor dari Meksiko, melambangkan status kerajaannya dan darah perlawanan.",
+                              "Raden Saleh menciptakan lukisan ini sebagai bentuk respons terhadap karya Nicolaas Pieneman. Jika Pieneman menggambarkan Pangeran Diponegoro menyerah, Raden Saleh menegaskan keberanian dan martabat sang pahlawan.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "European Influence",
-                          AppLanguage.id: "Pengaruh Eropa",
+                          AppLanguage.en:
+                              "A Symbol of Anti-Colonial Resistance",
+                          AppLanguage.id: "Simbol Perlawanan Kolonial",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "Saleh painted this work while studying under Horace Vernet in France, incorporating dramatic lighting techniques learned from his European mentors.",
+                              "More than a historical record, this painting is a political statement. Raden Saleh portrayed Diponegoro as a brave figure standing against colonial injustice.",
                           AppLanguage.id:
-                              "Saleh melukis karya ini saat belajar di bawah Horace Vernet di Prancis, menggabungkan teknik pencahayaan dramatis yang dipelajari dari mentor Eropanya.",
+                              "Tidak sekadar dokumentasi sejarah, lukisan ini adalah pernyataan politik. Raden Saleh menempatkan Diponegoro sebagai tokoh pemberani yang melawan ketidakadilan kolonial.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Lost Preparatory Sketches",
-                          AppLanguage.id: "Sketsa Persiapan yang Hilang",
+                          AppLanguage.en: "Dignity Unbowed",
+                          AppLanguage.id: "Martabat yang Tak Tertunduk",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "38 preparatory sketches for this painting were discovered in 2001 in a Dutch collector's estate, revealing Saleh's meticulous planning process.",
+                              "The composition and expression in this painting suggest that Prince Diponegoro did not surrender willingly, but was instead captured by force — a powerful message of resistance.",
                           AppLanguage.id:
-                              "38 sketsa persiapan untuk lukisan ini ditemukan pada tahun 2001 di perkebunan kolektor Belanda, mengungkapkan proses perencanaan Saleh yang teliti.",
+                              "Komposisi dan ekspresi dalam lukisan ini menyiratkan bahwa Pangeran Diponegoro tidak menyerah secara sukarela, melainkan ditangkap secara paksa. Ini adalah pesan perlawanan yang kuat.",
                         },
                       ),
                     ),
                     FunFact(
                       title: TranslatedString(
                         strings: {
-                          AppLanguage.en: "Political Message",
-                          AppLanguage.id: "Pesan Politik",
+                          AppLanguage.en:
+                              "From the Netherlands Back to the Homeland",
+                          AppLanguage.id: "Dari Belanda Kembali ke Ibu Pertiwi",
                         },
                       ),
                       description: TranslatedString(
                         strings: {
                           AppLanguage.en:
-                              "The painting's composition subtly criticizes colonial power by placing Diponegoro at the visual center despite being the captured figure.",
+                              "After spending more than a century in the Netherlands, the painting was finally returned to Indonesia in 1975 as part of a cultural agreement between the two nations.",
                           AppLanguage.id:
-                              "Komposisi lukisan secara halus mengkritik kekuatan kolonial dengan menempatkan Diponegoro di pusat visual meskipun sebagai figur yang ditangkap.",
-                        },
-                      ),
-                    ),
-                    FunFact(
-                      title: TranslatedString(
-                        strings: {
-                          AppLanguage.en: "Restoration Discovery",
-                          AppLanguage.id: "Penemuan Restorasi",
-                        },
-                      ),
-                      description: TranslatedString(
-                        strings: {
-                          AppLanguage.en:
-                              "During a 1995 restoration, conservators found a hidden layer showing an alternative composition where Diponegoro appears more defiant.",
-                          AppLanguage.id:
-                              "Selama restorasi tahun 1995, konservator menemukan lapisan tersembunyi yang menunjukkan komposisi alternatif di mana Diponegoro tampak lebih menantang.",
-                        },
-                      ),
-                    ),
-                    FunFact(
-                      title: TranslatedString(
-                        strings: {
-                          AppLanguage.en: "International Recognition",
-                          AppLanguage.id: "Pengakuan Internasional",
-                        },
-                      ),
-                      description: TranslatedString(
-                        strings: {
-                          AppLanguage.en:
-                              "This painting was exhibited at the 1857 Paris Salon, making Saleh the first Indonesian artist to gain significant European recognition.",
-                          AppLanguage.id:
-                              "Lukisan ini dipamerkan di Paris Salon 1857, menjadikan Saleh seniman Indonesia pertama yang mendapatkan pengakuan signifikan di Eropa.",
+                              "Setelah lebih dari satu abad berada di Belanda, lukisan ini akhirnya diserahkan kepada Indonesia pada tahun 1975 sebagai bagian dari perjanjian kebudayaan.",
                         },
                       ),
                     ),

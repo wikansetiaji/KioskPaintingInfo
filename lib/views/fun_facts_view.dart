@@ -85,7 +85,7 @@ class _FunFactsViewState extends State<FunFactsView> {
                       children: [
                         Expanded(
                           child: Text(
-                            fact.title.text(context),
+                            fact.title.text(context).toUpperCase(),
                             style: TextStyle(
                               fontSize: 36.sc,
                               color: Colors.white,
