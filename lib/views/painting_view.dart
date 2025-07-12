@@ -232,13 +232,7 @@ class _PaintingViewState extends State<PaintingView>
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                setState(() {
-                                  _isFunFactOpened = !_isFunFactOpened;
-                                });
-                                if (!_isFunFactOpened) {
-                                  _togglePointDetails(null);
-                                  EventBus.send("");
-                                }
+                                _isFunFactOpened = !_isFunFactOpened;
                               });
                             },
                             child: BottomButtonView(
