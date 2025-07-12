@@ -37,8 +37,10 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
       setState(() {
         if (event.contains("left")) {
           _showLeftSliderNudge = true;
+          _showRightSliderNudge = false;
         } else if (event.contains("right")) {
           _showRightSliderNudge = true;
+          _showLeftSliderNudge = false;
         } else {
           _showLeftSliderNudge = false;
           _showRightSliderNudge = false;
