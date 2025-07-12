@@ -164,6 +164,10 @@ class _PaintingViewState extends State<PaintingView>
                 pointOfInterest: pointOfInterest,
                 height: constraints.maxHeight,
                 onTap: () {
+                  if (_selectedPoint?.id == pointOfInterest.id) {
+                    _togglePointDetails(null);
+                    return;
+                  }
                   _togglePointDetails(pointOfInterest);
                   EventBus.send(pointOfInterest.id);
                 },
