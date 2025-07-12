@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/bottom_button_view.dart';
 import 'package:kiosk_painting_info/views/details_card_view.dart';
@@ -8,11 +9,24 @@ import 'package:kiosk_painting_info/views/fun_facts_view.dart';
 import 'package:kiosk_painting_info/views/poi_nudge_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
 import 'package:kiosk_painting_info/services/event_bus.dart';
+import 'package:provider/provider.dart';
+
+class TranslatedString {
+  final Map<AppLanguage, String> strings;
+
+  TranslatedString({required this.strings});
+
+  String text(BuildContext context) {
+    return strings[context.watch<LanguageProvider>().language] ??
+        strings[AppLanguage.en] ??
+        strings.values.first;
+  }
+}
 
 class PointOfInterest {
   final String id;
-  final String name;
-  final String description;
+  final TranslatedString name;
+  final TranslatedString description;
   final double x;
   final double y;
   bool showNudge = false;
@@ -28,8 +42,8 @@ class PointOfInterest {
 }
 
 class FunFact {
-  final String title;
-  final String description;
+  final TranslatedString title;
+  final TranslatedString description;
 
   FunFact({required this.title, required this.description});
 }
@@ -37,7 +51,7 @@ class FunFact {
 class PaintingView extends StatefulWidget {
   const PaintingView({
     super.key,
-    required this.text,
+    required this.name,
     required this.pointOfInterests,
     required this.imageAsset,
     required this.uiOnRight,
@@ -45,7 +59,7 @@ class PaintingView extends StatefulWidget {
     required this.onSelectPainting,
   });
 
-  final String text;
+  final TranslatedString name;
   final List<PointOfInterest> pointOfInterests;
   final String imageAsset;
   final bool uiOnRight;
@@ -247,7 +261,7 @@ class _PaintingViewState extends State<PaintingView>
                                 : CrossFadeState.showFirst,
                         firstChild: SizedBox(height: 0, width: 500.sc),
                         secondChild: FunFactsView(
-                          name: widget.text,
+                          name: widget.name.text(context),
                           funFacts: widget.funFacts,
                         ),
                       ),
@@ -261,7 +275,7 @@ class _PaintingViewState extends State<PaintingView>
                               widget.onSelectPainting(widget.imageAsset);
                             },
                             child: BottomButtonView(
-                              text: "See Full Painting",
+                              text: context.watch<LanguageProvider>().isEnglish ? "See Full Painting" : "Lihat Lukisan Penuh",
                               icon: Icons.home_max,
                               isOtherOpened: _isFunFactOpened,
                             ),
@@ -273,7 +287,7 @@ class _PaintingViewState extends State<PaintingView>
                               });
                             },
                             child: BottomButtonView(
-                              text: "Read Fun Facts",
+                              text: context.watch<LanguageProvider>().isEnglish ? "Reed Fun Facts" : "Baca Fakta",
                               icon: Icons.info_outline,
                               isOtherOpened: false,
                             ),

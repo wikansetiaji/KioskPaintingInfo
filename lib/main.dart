@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/pages/split_page.dart';
+import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => LanguageProvider(), child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,4 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

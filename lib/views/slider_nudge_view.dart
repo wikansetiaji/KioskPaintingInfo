@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/triangle_direction_view.dart';
+import 'package:provider/provider.dart';
 
 class SliderNudgeView extends StatefulWidget {
   const SliderNudgeView({
@@ -46,7 +48,7 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.isOnRight ? widget.handleX + 40.sc : widget.handleX - 190.sc,
+      left: widget.isOnRight ? widget.handleX + 40.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 190.sc : 220.sc),
       top: 0.5 * MediaQuery.of(context).size.height - 30.sc,
       child: AnimatedBuilder(
         animation: _scale,
@@ -64,7 +66,6 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
                 ),
               ),
             Container(
-              width: 140.sc,
               padding: EdgeInsets.symmetric(horizontal: 10.sc, vertical: 6.sc),
               decoration: BoxDecoration(
                 color: const Color(0xBBFFFAF1),
@@ -84,7 +85,7 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
                     ),
                   ),
                   Text(
-                    "Slide to see \ncomparison",
+                    context.watch<LanguageProvider>().isEnglish ? "Slide to see \ncomparison" : "Geser untuk lihat \nperbandingan",
                     style: TextStyle(
                       fontSize: 14.sc,
                       color: const Color(0xFF212121),

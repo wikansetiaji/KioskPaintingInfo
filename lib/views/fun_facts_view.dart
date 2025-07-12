@@ -69,7 +69,7 @@ class _FunFactsViewState extends State<FunFactsView> {
                       children: [
                         Expanded(
                           child: Text(
-                            fact.title,
+                            fact.title.text(context),
                             style: TextStyle(
                               fontSize: 14.sc,
                               color: Colors.white,
@@ -102,7 +102,7 @@ class _FunFactsViewState extends State<FunFactsView> {
                       ),
                     ),
                     child: Text(
-                      fact.description,
+                      fact.description.text(context),
                       style: TextStyle(
                         fontSize: 14.sc,
                         color: Colors.white,

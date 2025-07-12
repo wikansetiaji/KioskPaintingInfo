@@ -29,7 +29,7 @@ class DetailsCardView extends StatelessWidget {
     // Calculate dynamic height based on content
     final titlePainter = TextPainter(
       text: TextSpan(
-        text: point.name,
+        text: point.name.text(context),
         style: TextStyle(fontSize: 16.sc, fontWeight: FontWeight.bold),
       ),
       maxLines: null,
@@ -39,7 +39,7 @@ class DetailsCardView extends StatelessWidget {
 
     final descriptionPainter = TextPainter(
       text: TextSpan(
-        text: point.description,
+        text: point.description.text(context),
         style: TextStyle(fontSize: 14.sc),
       ),
       maxLines: null,
@@ -100,7 +100,7 @@ class DetailsCardView extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        point.name,
+                        point.name.text(context),
                         style: TextStyle(
                           fontSize: 16.sc,
                           color: Colors.white,
@@ -119,7 +119,7 @@ class DetailsCardView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(12.sc),
                   child: Text(
-                    point.description,
+                    point.description.text(context),
                     style: TextStyle(fontSize: 14.sc, color: Colors.white),
                   ),
                 ),
