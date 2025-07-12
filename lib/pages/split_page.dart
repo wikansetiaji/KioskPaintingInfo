@@ -83,6 +83,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
     setState(() {
       _showCoverScreen = true;
       _selectedPainting = null;
+      _dragPosition = 0.5;
       EventBus.send("");
     });
   }
