@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/services/event_bus.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
 
@@ -16,14 +17,15 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   late AnimationController _scaleAnimationController;
   late Animation<double> _modalAnimation;
   late Animation<double> _scaleAnimation;
-  
+
   // Transform controller for zoom and pan
-  final TransformationController _transformationController = TransformationController();
+  final TransformationController _transformationController =
+      TransformationController();
 
   @override
   void initState() {
     super.initState();
-    
+
     // Modal fade animation
     _modalAnimationController = AnimationController(
       duration: const Duration(milliseconds: 300),
@@ -33,7 +35,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
       parent: _modalAnimationController,
       curve: Curves.easeInOut,
     );
-    
+
     // Scale animation for the painting
     _scaleAnimationController = AnimationController(
       duration: const Duration(milliseconds: 400),
@@ -55,6 +57,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
   void _showPainting(String? painting) {
     if (painting != null) {
+      EventBus.send("");
       setState(() {
         _selectedPainting = painting;
       });
@@ -106,6 +109,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   uiOnRight: true,
                   pointOfInterests: [
                     PointOfInterest(
+                      id: "1",
                       name: "The Mysterious Garden Gateway",
                       description:
                           "This ornate archway leads to a secret garden where ancient roses bloom year-round. Legend says that lovers who pass through together will be blessed with eternal happiness and prosperity.",
@@ -113,6 +117,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.95,
                     ),
                     PointOfInterest(
+                      id: "2",
                       name: "The Weathered Stone Fountain",
                       description:
                           "Built in 1847, this fountain was once the centerpiece of the estate's main courtyard. The intricate carvings depict scenes from classical mythology, including the story of Persephone and her journey between worlds.",
@@ -120,6 +125,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.91,
                     ),
                     PointOfInterest(
+                      id: "3",
                       name: "The Artist's Studio Window",
                       description:
                           "From this very window, the renowned painter Elena Martinez created her famous series of landscape paintings. The natural light streaming through this opening inspired some of the most celebrated works of the 19th century.",
@@ -127,6 +133,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.5,
                     ),
                     PointOfInterest(
+                      id: "4",
                       name: "The Ancient Oak Tree",
                       description:
                           "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
@@ -181,6 +188,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   uiOnRight: false,
                   pointOfInterests: [
                     PointOfInterest(
+                      id: "1",
                       name: "The Grand Ballroom Chandelier",
                       description:
                           "This magnificent crystal chandelier contains over 2,000 individual crystals, each hand-cut and carefully positioned. It was commissioned by the estate's original owner and took master craftsmen three years to complete.",
@@ -188,6 +196,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.85,
                     ),
                     PointOfInterest(
+                      id: "2",
                       name: "The Hidden Library Alcove",
                       description:
                           "Behind this seemingly ordinary bookshelf lies a secret reading nook where the estate's children would hide during their lessons. The alcove contains first-edition books dating back to the 1600s, including rare manuscripts and poetry collections.",
@@ -195,6 +204,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.7,
                     ),
                     PointOfInterest(
+                      id: "3",
                       name: "The Marble Staircase Banister",
                       description:
                           "Carved from a single piece of Carrara marble, this banister features intricate floral patterns that change subtly as they spiral upward. Each flower represents a different member of the founding family.",
@@ -202,6 +212,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       y: 0.2,
                     ),
                     PointOfInterest(
+                      id: "4",
                       name: "The Portrait Gallery Corner",
                       description:
                           "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
@@ -258,87 +269,107 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
             vwSlider(handleX),
 
-            // Animated modal overlay
             if (_selectedPainting != null)
-              AnimatedBuilder(
-                animation: _modalAnimation,
-                builder: (context, child) {
-                  return GestureDetector(
-                    onTap: _hidePainting,
-                    child: Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      color: Colors.black.withOpacity(0.8 * _modalAnimation.value),
-                    ),
-                  );
-                },
-              ),
-
-            // Animated zoomable painting
-            if (_selectedPainting != null)
-              AnimatedBuilder(
-                animation: Listenable.merge([_modalAnimation, _scaleAnimation]),
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _scaleAnimation.value,
-                    child: Opacity(
-                      opacity: _modalAnimation.value,
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        padding: EdgeInsets.all(100.sc),
-                        child: Center(
+              Stack(
+                children: [
+                  AnimatedBuilder(
+                    animation: _modalAnimation,
+                    builder: (context, child) {
+                      return GestureDetector(
+                        onTap: _hidePainting,
+                        child: Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          color: Colors.black.withOpacity(
+                            0.8 * _modalAnimation.value,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  AnimatedBuilder(
+                    animation: Listenable.merge([
+                      _modalAnimation,
+                      _scaleAnimation,
+                    ]),
+                    builder: (context, child) {
+                      return Transform.scale(
+                        scale: _scaleAnimation.value,
+                        child: Opacity(
+                          opacity: _modalAnimation.value,
                           child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color(0xFFFFD700),
-                                width: 22.sc,
-                              ),
-                              borderRadius: BorderRadius.circular(12.sc),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  blurRadius: 20.sc,
-                                  offset: Offset(0, 10.sc),
+                            width: double.infinity,
+                            height: double.infinity,
+                            padding: EdgeInsets.all(100.sc),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color(0xFFFFD700),
+                                    width: 22.sc,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.sc),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      blurRadius: 20.sc,
+                                      offset: Offset(0, 10.sc),
+                                    ),
+                                    BoxShadow(
+                                      color: const Color(
+                                        0xFFFFD700,
+                                      ).withOpacity(0.3),
+                                      blurRadius: 40.sc,
+                                      offset: Offset(0, 0),
+                                    ),
+                                  ],
                                 ),
-                                BoxShadow(
-                                  color: const Color(0xFFFFD700).withOpacity(0.3),
-                                  blurRadius: 40.sc,
-                                  offset: Offset(0, 0),
-                                ),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(4.sc),
-                              child: GestureDetector(
-                                onDoubleTap: () {
-                                  if (_transformationController.value.getMaxScaleOnAxis() > 1.1) {
-                                    _transformationController.value = Matrix4.identity();
-                                  } else {
-                                    _transformationController.value = Matrix4.identity()..scale(2.0)..translate(
-                                      -MediaQuery.of(context).size.width / 4,
-                                      -MediaQuery.of(context).size.height / 4,
-                                    );
-                                  }
-                                },
-                                child: InteractiveViewer(
-                                  transformationController: _transformationController,
-                                  minScale: 0.5,
-                                  maxScale: 4.0,
-                                  constrained: true,
-                                  child: Image.asset(
-                                    _selectedPainting!,
-                                    fit: BoxFit.contain,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(4.sc),
+                                  child: GestureDetector(
+                                    onDoubleTap: () {
+                                      if (_transformationController.value
+                                              .getMaxScaleOnAxis() >
+                                          1.1) {
+                                        _transformationController.value =
+                                            Matrix4.identity();
+                                      } else {
+                                        _transformationController.value =
+                                            Matrix4.identity()
+                                              ..scale(2.0)
+                                              ..translate(
+                                                -MediaQuery.of(
+                                                      context,
+                                                    ).size.width /
+                                                    4,
+                                                -MediaQuery.of(
+                                                      context,
+                                                    ).size.height /
+                                                    4,
+                                              );
+                                      }
+                                    },
+                                    child: InteractiveViewer(
+                                      transformationController:
+                                          _transformationController,
+                                      minScale: 0.5,
+                                      maxScale: 4.0,
+                                      constrained: true,
+                                      child: Image.asset(
+                                        _selectedPainting!,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  );
-                },
+                      );
+                    },
+                  ),
+                ],
               ),
           ],
         ),

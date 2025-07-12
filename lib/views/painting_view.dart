@@ -1,17 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/bottom_button_view.dart';
 import 'package:kiosk_painting_info/views/details_card_view.dart';
 import 'package:kiosk_painting_info/views/fun_facts_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
+import 'package:kiosk_painting_info/services/event_bus.dart';
 
 class PointOfInterest {
+  final String id;
   final String name;
   final String description;
   final double x;
   final double y;
 
   PointOfInterest({
+    required this.id,
     required this.name,
     required this.description,
     required this.x,
@@ -34,7 +39,7 @@ class PaintingView extends StatefulWidget {
     required this.imageAsset,
     required this.uiOnRight,
     required this.funFacts,
-    required this.onSelectPainting
+    required this.onSelectPainting,
   });
 
   final String text;
@@ -55,10 +60,26 @@ class _PaintingViewState extends State<PaintingView>
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
   bool _isFunFactOpened = false;
+  late StreamSubscription _subscription;
 
   @override
   void initState() {
     super.initState();
+
+    _subscription = EventBus.stream.listen((event) {
+      setState(() {
+        if (event == "") {
+          _togglePointDetails(null);
+          return;
+        } else if (event == _selectedPoint?.id) {
+          return;
+        }
+        _togglePointDetails(
+          widget.pointOfInterests.firstWhere((point) => point.id == event),
+        );
+      });
+    });
+
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 300),
       vsync: this,
@@ -76,6 +97,7 @@ class _PaintingViewState extends State<PaintingView>
   @override
   void dispose() {
     _animationController.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
@@ -141,7 +163,10 @@ class _PaintingViewState extends State<PaintingView>
                 width: constraints.maxWidth,
                 pointOfInterest: pointOfInterest,
                 height: constraints.maxHeight,
-                onTap: () => _togglePointDetails(pointOfInterest),
+                onTap: () {
+                  _togglePointDetails(pointOfInterest);
+                  EventBus.send(pointOfInterest.id);
+                },
               ),
 
             // Details card
@@ -188,7 +213,7 @@ class _PaintingViewState extends State<PaintingView>
                         spacing: 20.sc,
                         children: [
                           GestureDetector(
-                            onTap: () { 
+                            onTap: () {
                               setState(() {
                                 _togglePointDetails(null);
                               });
@@ -203,10 +228,13 @@ class _PaintingViewState extends State<PaintingView>
                           GestureDetector(
                             onTap: () {
                               setState(() {
+                                setState(() {
+                                  _isFunFactOpened = !_isFunFactOpened;
+                                });
                                 if (!_isFunFactOpened) {
                                   _togglePointDetails(null);
+                                  EventBus.send("");
                                 }
-                                _isFunFactOpened = !_isFunFactOpened;
                               });
                             },
                             child: BottomButtonView(
