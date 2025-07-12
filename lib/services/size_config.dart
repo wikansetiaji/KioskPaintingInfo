@@ -11,8 +11,8 @@ class SizeConfig {
     screenHeight = mqData.size.height;
 
     // Base dimensions from your FHD design
-    const double baseWidth = 1920;
-    const double baseHeight = 1080;
+    const double baseWidth = 3840;
+    const double baseHeight = 2160;
 
     // You can use either width, height, or average scaling
     scaleFactor = (screenWidth / baseWidth + screenHeight / baseHeight) / 2;

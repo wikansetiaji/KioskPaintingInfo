@@ -24,36 +24,35 @@ class DetailsCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     final positionX = width * point.x;
     final positionY = height * point.y;
-    final cardWidth = 400.0.sc;
+    final cardWidth = 892.0.sc;
 
     // Calculate dynamic height based on content
     final titlePainter = TextPainter(
       text: TextSpan(
         text: point.name.text(context),
-        style: TextStyle(fontSize: 16.sc, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 36.sc, fontWeight: FontWeight.bold),
       ),
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
-    titlePainter.layout(maxWidth: cardWidth - 24.sc); // Account for padding
+    titlePainter.layout(maxWidth: cardWidth - 64.sc); // Account for padding
 
     final descriptionPainter = TextPainter(
       text: TextSpan(
         text: point.description.text(context),
-        style: TextStyle(fontSize: 14.sc),
+        style: TextStyle(fontSize: 36.sc),
       ),
       maxLines: null,
       textDirection: TextDirection.ltr,
     );
     descriptionPainter.layout(
-      maxWidth: cardWidth - 24.sc,
+      maxWidth: cardWidth - 64.sc,
     ); // Account for padding
 
     final cardHeight =
         titlePainter.height +
-        8.sc +
         descriptionPainter.height +
-        24.sc; // titleHeight + spacing + descHeight + padding
+        64.sc; // titleHeight + descHeight + padding
 
     double left = positionX - cardWidth / 2;
     double top = positionY + 20.sc;
@@ -66,8 +65,8 @@ class DetailsCardView extends StatelessWidget {
       left = positionX;
     }
 
-    if (top + cardHeight > height - 80.sc) {
-      top = positionY - 80.sc - cardHeight;
+    if (top + cardHeight > height - 240.sc) {
+      top = positionY - 240.sc - cardHeight;
     }
 
     return Positioned(
@@ -81,7 +80,7 @@ class DetailsCardView extends StatelessWidget {
             width: cardWidth,
             decoration: BoxDecoration(
               color: Color(0xFF2C2B2B),
-              borderRadius: BorderRadius.circular(8.sc),
+              borderRadius: BorderRadius.circular(20.sc),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,12 +88,12 @@ class DetailsCardView extends StatelessWidget {
               children: [
                 Container(
                   width: width,
-                  padding: EdgeInsets.all(12.sc),
+                  padding: EdgeInsets.all(32.sc),
                   decoration: BoxDecoration(
                     color: Color(0xFF4C4C4C),
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8.sc),
-                      topRight: Radius.circular(8.sc),
+                      topLeft: Radius.circular(20.sc),
+                      topRight: Radius.circular(20.sc),
                     ),
                   ),
                   child: Row(
@@ -102,25 +101,34 @@ class DetailsCardView extends StatelessWidget {
                       Text(
                         point.name.text(context),
                         style: TextStyle(
-                          fontSize: 16.sc,
+                          fontSize: 36.sc,
                           color: Colors.white,
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                       Spacer(),
                       GestureDetector(
                         onTap: onClose,
                         child: Icon(
-                          Icons.close, color: Colors.white, size: 20.sc,
-                          ),
+                          Icons.close,
+                          color: Colors.white,
+                          size: 48.sc,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(12.sc),
+                  padding: EdgeInsets.all(32.sc),
                   child: Text(
                     point.description.text(context),
-                    style: TextStyle(fontSize: 14.sc, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 36.sc,
+                      color: Colors.white,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
               ],

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 
 class BottomButtonView extends StatelessWidget {
-  const BottomButtonView({super.key, required this.text, required this.icon, required this.isOtherOpened});
+  const BottomButtonView({
+    super.key,
+    required this.text,
+    required this.icon,
+    required this.isOtherOpened,
+  });
 
   final String text;
   final IconData icon;
@@ -11,19 +16,28 @@ class BottomButtonView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.sc),
+      padding: EdgeInsets.all(24.sc),
       decoration: BoxDecoration(
         color: isOtherOpened ? Color(0xFF373737) : Color(0xFF4C4C4C),
-        borderRadius: BorderRadius.circular(8.sc),
+        borderRadius: BorderRadius.circular(12.sc),
       ),
       child: Row(
-        spacing: 10.sc,
+        spacing: 32.sc,
         children: [
-          Icon(icon, color: isOtherOpened ? Color(0xFF929292) : Color(0xFFFFE8AB), size: 20.sc),
+          Icon(
+            icon,
+            color: isOtherOpened ? Color(0xFF929292) : Color(0xFFFFE8AB),
+            size: 60.sc,
+          ),
           Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16.sc, color: isOtherOpened ? Color(0xFF929292) : Colors.white),
+            style: TextStyle(
+              fontSize: 40.sc,
+              color: isOtherOpened ? Color(0xFF929292) : Colors.white,
+              fontWeight: FontWeight.w600,
+              fontFamily: "Inter",
+            ),
           ),
         ],
       ),

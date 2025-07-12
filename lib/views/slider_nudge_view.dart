@@ -48,8 +48,8 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.isOnRight ? widget.handleX + 40.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 190.sc : 220.sc),
-      top: 0.5 * MediaQuery.of(context).size.height - 30.sc,
+      left: widget.isOnRight ? widget.handleX + 100.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 460.sc : 560.sc),
+      top: 0.5 * MediaQuery.of(context).size.height - 80.sc,
       child: AnimatedBuilder(
         animation: _scale,
         builder: (_, child) {
@@ -59,21 +59,21 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
           children: [
             if (widget.isOnRight)
               CustomPaint(
-                size: Size(10.sc, 20.sc),
+                size: Size(14.sc, 35.sc),
                 painter: TrianglePainter(
                   color: const Color(0xBBFFFAF1),
                   direction: TriangleDirection.left,
                 ),
               ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.sc, vertical: 6.sc),
+              padding: EdgeInsets.symmetric(horizontal: 20.sc, vertical: 12.sc),
               decoration: BoxDecoration(
                 color: const Color(0xBBFFFAF1),
-                borderRadius: BorderRadius.circular(8.sc),
-                border: Border.all(color: const Color(0xFFFFFFFF), width: 3.sc),
+                borderRadius: BorderRadius.circular(12.sc),
+                border: Border.all(color: const Color(0xFFFFFFFF), width: 4.sc),
               ),
               child: Row(
-                spacing: 10.sc,
+                spacing: 20.sc,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
@@ -81,14 +81,16 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
                     child: Icon(
                       Icons.close,
                       color: const Color(0xFF212121),
-                      size: 20.sc,
+                      size: 48.sc,
                     ),
                   ),
                   Text(
                     context.watch<LanguageProvider>().isEnglish ? "Slide to see \ncomparison" : "Geser untuk lihat \nperbandingan",
                     style: TextStyle(
-                      fontSize: 14.sc,
+                      fontSize: 40.sc,
                       color: const Color(0xFF212121),
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500
                     ),
                   ),
                 ],
@@ -96,7 +98,7 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
             ),
             if (!widget.isOnRight)
               CustomPaint(
-                size: Size(10.sc, 20.sc),
+                size: Size(14.sc, 35.sc),
                 painter: TrianglePainter(
                   color: const Color(0xBBFFFAF1),
                   direction: TriangleDirection.right,

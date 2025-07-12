@@ -259,14 +259,14 @@ class _PaintingViewState extends State<PaintingView>
                             _isFunFactOpened
                                 ? CrossFadeState.showSecond
                                 : CrossFadeState.showFirst,
-                        firstChild: SizedBox(height: 0, width: 500.sc),
+                        firstChild: SizedBox(height: 0, width: 892.sc),
                         secondChild: FunFactsView(
                           name: widget.name.text(context),
                           funFacts: widget.funFacts,
                         ),
                       ),
                       Row(
-                        spacing: 20.sc,
+                        spacing: 60.sc,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -276,7 +276,7 @@ class _PaintingViewState extends State<PaintingView>
                             },
                             child: BottomButtonView(
                               text: context.watch<LanguageProvider>().isEnglish ? "See Full Painting" : "Lihat Lukisan Penuh",
-                              icon: Icons.home_max,
+                              icon: Icons.fullscreen,
                               isOtherOpened: _isFunFactOpened,
                             ),
                           ),
@@ -287,8 +287,8 @@ class _PaintingViewState extends State<PaintingView>
                               });
                             },
                             child: BottomButtonView(
-                              text: context.watch<LanguageProvider>().isEnglish ? "Reed Fun Facts" : "Baca Fakta",
-                              icon: Icons.info_outline,
+                              text: context.watch<LanguageProvider>().isEnglish ? "Read Fun Facts" : "Baca Fakta",
+                              icon: Icons.menu_book_outlined,
                               isOtherOpened: false,
                             ),
                           ),

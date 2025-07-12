@@ -7,7 +7,6 @@ import 'package:kiosk_painting_info/views/slider_nudge_view.dart';
 import 'package:kiosk_painting_info/services/event_bus.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
-import 'package:kiosk_painting_info/views/triangle_direction_view.dart';
 
 class SplitPage extends StatefulWidget {
   const SplitPage({super.key});
@@ -138,8 +137,10 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   imageAsset: 'assets/pieneman-painting.jpg',
                   name: TranslatedString(
                     strings: {
-                      AppLanguage.en: "Pieneman's Painting",
-                      AppLanguage.id: "Lukisan Pieneman",
+                      AppLanguage.en:
+                          "THE ARREST OF DIPONEGORO BY LIEUTENANT GENERAL DE KOCK",
+                      AppLanguage.id:
+                          "THE ARREST OF DIPONEGORO BY LIEUTENANT GENERAL DE KOCK",
                     },
                   ),
                   uiOnRight: true,
@@ -333,8 +334,8 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   imageAsset: 'assets/saleh-painting.jpg',
                   name: TranslatedString(
                     strings: {
-                      AppLanguage.en: "Raden Saleh's Painting",
-                      AppLanguage.id: "Lukisan Raden Saleh",
+                      AppLanguage.en: "PENANGKAPAN PANGERAN DIPONEGORO",
+                      AppLanguage.id: "PENANGKAPAN PANGERAN DIPONEGORO",
                     },
                   ),
                   uiOnRight: false,
@@ -618,9 +619,9 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: const Color(0xFFFFD700),
-                                    width: 22.sc,
+                                    width: 47.sc,
                                   ),
-                                  borderRadius: BorderRadius.circular(12.sc),
+                                  borderRadius: BorderRadius.circular(35.sc),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black.withOpacity(0.5),
@@ -691,44 +692,35 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
   Positioned vwSlider(double handleX) {
     return Positioned(
-      left: handleX - 25.sc,
+      left: handleX - 65.sc,
       top: 0,
       bottom: 0,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Container(width: 16.sc, color: Color(0xFF4F5051)),
+          Container(width: 40.sc, color: Colors.white),
           Container(
-            width: 50.sc,
-            height: 50.sc,
+            width: 130.sc,
+            height: 130.sc,
             decoration: BoxDecoration(
-              color: Color(0xFF4F5051),
-              borderRadius: BorderRadius.circular(25.sc),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(65.sc),
             ),
           ),
           Container(
-            width: 30.sc,
-            height: 30.sc,
+            width: 80.sc,
+            height: 80.sc,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20.sc),
+              color: Color(0xFF636363),
+              borderRadius: BorderRadius.circular(40.sc),
             ),
           ),
           SizedBox(
-            width: 50.sc,
+            width: 80.sc,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Spacer(),
-                Icon(Icons.chevron_left, color: Color(0xFF4F5051), size: 17.sc),
-                Icon(
-                  Icons.chevron_right,
-                  color: Color(0xFF4F5051),
-                  size: 17.sc,
-                ),
-                Spacer(),
-              ],
+              children: [Icon(Icons.code, color: Colors.white, size: 60.sc)],
             ),
           ),
         ],

@@ -14,25 +14,25 @@ class LanguageToggleSwitch extends StatelessWidget {
     return GestureDetector(
       onTap: () => provider.toggleLanguage(),
       child: Container(
-        width: 79.2.sc,
-        height: 39.6.sc,
+        width: 211.2.sc,
+        height: 105.6.sc,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: const Color(0xFF4B4B4B),
-          borderRadius: BorderRadius.circular(19.8.sc),
+          borderRadius: BorderRadius.circular(52.8.sc),
         ),
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.6.sc),
+              padding: EdgeInsets.symmetric(horizontal: 9.6.sc),
               child: AnimatedAlign(
                 duration: const Duration(milliseconds: 200),
                 curve: Curves.easeInOut,
                 alignment:
                     isEnglish ? Alignment.centerLeft : Alignment.centerRight,
                 child: Container(
-                  width: 28.8.sc,
-                  height: 28.8.sc,
+                  width: 76.8.sc,
+                  height: 76.8.sc,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
@@ -51,8 +51,8 @@ class LanguageToggleSwitch extends StatelessWidget {
                         color: isEnglish ? Colors.black : Colors.white,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Archivo',
-                        fontSize: 18.sc,
-                        letterSpacing: -3,
+                        fontSize: 48.sc,
+                        letterSpacing: -4,
                       ),
                     ),
                   ),
@@ -65,7 +65,7 @@ class LanguageToggleSwitch extends StatelessWidget {
                         color: isEnglish ? Colors.white : Colors.black,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Archivo',
-                        fontSize: 18.sc,
+                        fontSize: 48.sc,
                       ),
                     ),
                   ),
