@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/views/slider_nudge_view.dart';
 import 'package:kiosk_painting_info/services/event_bus.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
+import 'package:kiosk_painting_info/views/triangle_direction_view.dart';
 
 class SplitPage extends StatefulWidget {
   const SplitPage({super.key});
@@ -13,10 +17,13 @@ class SplitPage extends StatefulWidget {
 class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   double _dragPosition = 0.5;
   String? _selectedPainting;
+  bool _showLeftSliderNudge = false;
+  bool _showRightSliderNudge = false;
   late AnimationController _modalAnimationController;
   late AnimationController _scaleAnimationController;
   late Animation<double> _modalAnimation;
   late Animation<double> _scaleAnimation;
+  late StreamSubscription _subscription;
 
   // Transform controller for zoom and pan
   final TransformationController _transformationController =
@@ -25,6 +32,19 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
+    _subscription = EventBus.stream.listen((event) {
+      setState(() {
+        if (event.contains("left")) {
+          _showLeftSliderNudge = true;
+        } else if (event.contains("right")) {
+          _showRightSliderNudge = true;
+        } else {
+          _showLeftSliderNudge = false;
+          _showRightSliderNudge = false;
+        }
+      });
+    });
 
     // Modal fade animation
     _modalAnimationController = AnimationController(
@@ -52,6 +72,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
     _modalAnimationController.dispose();
     _scaleAnimationController.dispose();
     _transformationController.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
@@ -86,6 +107,12 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
       body: GestureDetector(
         onHorizontalDragUpdate: (details) {
           setState(() {
+            if (_showLeftSliderNudge) {
+              _showLeftSliderNudge = false;
+            }
+            if (_showRightSliderNudge) {
+              _showRightSliderNudge = false;
+            }
             if (_selectedPainting != null) {
               return;
             }
@@ -139,7 +166,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                           "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
                       x: 0.6,
                       y: 0.4,
-                      showNudge: true
+                      showNudge: true,
                     ),
                   ],
                   funFacts: [
@@ -219,7 +246,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                           "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
                       x: 0.3,
                       y: 0.3,
-                      showNudge: true
+                      showNudge: true,
                     ),
                   ],
                   funFacts: [
@@ -270,6 +297,25 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
             ),
 
             vwSlider(handleX),
+
+            if (_showRightSliderNudge)
+              SliderNudgeView(
+                handleX: handleX,
+                isOnRight: true,
+                onClose: () {
+                  setState(() {
+                    _showRightSliderNudge = false;
+                  });
+                },
+              ),
+            if (_showLeftSliderNudge)
+              SliderNudgeView(
+                handleX: handleX,
+                isOnRight: false,
+                onClose: () {
+                  _showLeftSliderNudge = false;
+                },
+              ),
 
             if (_selectedPainting != null)
               Stack(

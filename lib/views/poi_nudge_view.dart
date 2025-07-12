@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/painting_view.dart';
+import 'package:kiosk_painting_info/views/triangle_direction_view.dart';
 
 class POINudgeView extends StatefulWidget {
   const POINudgeView({
@@ -79,7 +80,7 @@ class _POINudgeViewState extends State<POINudgeView> with SingleTickerProviderSt
                 children: [
                   Text(
                     "Open",
-                    style: TextStyle(fontSize: 16.sc, color: const Color(0xFF212121)),
+                    style: TextStyle(fontSize: 14.sc, color: const Color(0xFF212121)),
                   ),
                   SizedBox(width: 4.sc),
                   Icon(
@@ -95,27 +96,4 @@ class _POINudgeViewState extends State<POINudgeView> with SingleTickerProviderSt
       ),
     );
   }
-}
-
-class TrianglePainter extends CustomPainter {
-  final Color color;
-
-  TrianglePainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = color;
-
-    final path =
-        Path()
-          ..moveTo(0, size.height)
-          ..lineTo(size.width / 2, 0)
-          ..lineTo(size.width, size.height)
-          ..close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

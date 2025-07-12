@@ -92,11 +92,11 @@ class _PaintingViewState extends State<PaintingView>
         if (event == "") {
           _togglePointDetails(null);
           return;
-        } else if (event == _selectedPoint?.id) {
+        } else if (event.contains(_selectedPoint?.id ?? "***")) {
           return;
         }
         _togglePointDetails(
-          widget.pointOfInterests.firstWhere((point) => point.id == event),
+          widget.pointOfInterests.firstWhere((point) => event.contains(point.id)),
         );
       });
     });
@@ -195,7 +195,7 @@ class _PaintingViewState extends State<PaintingView>
                     return;
                   }
                   _togglePointDetails(pointOfInterest);
-                  EventBus.send(pointOfInterest.id);
+                  EventBus.send("${pointOfInterest.id}/${widget.uiOnRight ? "right" : "left"}");
                 },
               ),
 
