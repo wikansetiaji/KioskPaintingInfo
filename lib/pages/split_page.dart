@@ -25,6 +25,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   late Animation<double> _modalAnimation;
   late Animation<double> _scaleAnimation;
   late StreamSubscription _subscription;
+  bool _showCoverScreen = true;
 
   // Transform controller for zoom and pan
   final TransformationController _transformationController =
@@ -104,24 +105,26 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final handleX = _dragPosition * screenWidth;
+    final handleX = _dragPosition * screenWidth - 85.sc;
 
     return Scaffold(
       body: GestureDetector(
         onHorizontalDragUpdate: (details) {
-          setState(() {
-            if (_showLeftSliderNudge) {
-              _showLeftSliderNudge = false;
-            }
-            if (_showRightSliderNudge) {
-              _showRightSliderNudge = false;
-            }
-            if (_selectedPainting != null) {
-              return;
-            }
-            _dragPosition += details.delta.dx / screenWidth;
-            _dragPosition = _dragPosition.clamp(0.0, 1.0);
-          });
+          if (!_showCoverScreen) {
+            setState(() {
+              if (_showLeftSliderNudge) {
+                _showLeftSliderNudge = false;
+              }
+              if (_showRightSliderNudge) {
+                _showRightSliderNudge = false;
+              }
+              if (_selectedPainting != null) {
+                return;
+              }
+              _dragPosition += details.delta.dx / screenWidth;
+              _dragPosition = _dragPosition.clamp(0.0, 1.0);
+            });
+          }
         },
         onTapDown: (details) {
           print(
@@ -675,6 +678,74 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   ),
                 ],
               ),
+
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 2000),
+              switchInCurve: Curves.elasticIn,
+              switchOutCurve: Curves.easeIn,
+              child: _showCoverScreen
+                ? GestureDetector(
+                  key: const ValueKey("coverScreen"),
+                  onTap: () {
+                  setState(() {
+                    _showCoverScreen = false;
+                  });
+                  },
+                  child: Stack(
+                  children: [
+                    Image.asset(
+                    "assets/bg-home-screen.png",
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                    ),
+                    Padding(
+                    padding: EdgeInsets.all(120.sc),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                      Text(
+                        "PENANGKAPAN PANGERAN \nDIPONEGORO",
+                        style: TextStyle(
+                        fontSize: 80.sc,
+                        color: Color(0xFFFFFFFF),
+                        fontFamily: "Airone",
+                        fontWeight: FontWeight.normal,
+                        letterSpacing: 1,
+                        ),
+                      ),
+                      ],
+                    ),
+                    ),
+                    Padding(
+                    padding: EdgeInsets.all(120.sc),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                      Column(
+                        children: [
+                        Spacer(),
+                        Text(
+                          "THE ARREST OF DIPONEGORO BY \nLIEUTENANT GENERAL DE KOCK",
+                          style: TextStyle(
+                          fontSize: 80.sc,
+                          color: Color(0xFFFFFFFF),
+                          fontFamily: "Airone",
+                          fontWeight: FontWeight.normal,
+                          letterSpacing: 1,
+                          ),
+                        ),
+                        ],
+                      ),
+                      ],
+                    ),
+                    ),
+                    vwSlider(handleX),
+                  ],
+                  ),
+                )
+                : const SizedBox.shrink(),
+            ),
           ],
         ),
       ),
@@ -683,7 +754,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
   Positioned vwSlider(double handleX) {
     return Positioned(
-      left: handleX - 65.sc,
+      left: handleX,
       top: 0,
       bottom: 0,
       child: Stack(
