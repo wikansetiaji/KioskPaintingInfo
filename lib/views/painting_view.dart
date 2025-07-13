@@ -240,7 +240,7 @@ class _PaintingViewState extends State<PaintingView>
                             },
                             child: BottomButtonView(
                               text: context.watch<LanguageProvider>().isEnglish ? "See Full Painting" : "Lihat Lukisan Penuh",
-                              icon: Icons.fullscreen,
+                              icon: "assets/icons/icon-maximize.png",
                               isOtherOpened: _isFunFactOpened,
                             ),
                           ),
@@ -252,7 +252,7 @@ class _PaintingViewState extends State<PaintingView>
                             },
                             child: BottomButtonView(
                               text: context.watch<LanguageProvider>().isEnglish ? "Read Fun Facts" : "Baca Fakta",
-                              icon: Icons.menu_book_outlined,
+                              icon: "assets/icons/icon-book.png",
                               isOtherOpened: false,
                             ),
                           ),

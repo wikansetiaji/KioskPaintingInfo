@@ -10,7 +10,7 @@ class BottomButtonView extends StatelessWidget {
   });
 
   final String text;
-  final IconData icon;
+  final String icon;
   final bool isOtherOpened;
 
   @override
@@ -24,10 +24,11 @@ class BottomButtonView extends StatelessWidget {
       child: Row(
         spacing: 32.sc,
         children: [
-          Icon(
+          Image.asset(
             icon,
+            width: 60.sc,
+            height: 60.sc,
             color: isOtherOpened ? Color(0xFF929292) : Color(0xFFFFE8AB),
-            size: 60.sc,
           ),
           Text(
             text,
