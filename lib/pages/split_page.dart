@@ -43,7 +43,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
     super.initState();
 
     _idleTimer = IdleTimer(
-      timeout: Duration(minutes: 10),
+      timeout: Duration(minutes: 5),
       onTimeout: _onIdleTimeout,
     );
     _idleTimer.reset();
