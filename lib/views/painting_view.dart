@@ -189,7 +189,7 @@ class _PaintingViewState extends State<PaintingView>
                 color: Colors.black,
                 child: Image.asset(
                   widget.imageAsset,
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                   width: constraints.maxWidth,
                   height: constraints.maxHeight,
                 ),
