@@ -179,6 +179,40 @@ Win32Window::MessageHandler(HWND hwnd,
                             WPARAM const wparam,
                             LPARAM const lparam) noexcept {
   switch (message) {
+    case WM_SIZING: {
+      RECT* rect = reinterpret_cast<RECT*>(lparam);
+      constexpr float aspectRatio = 16.0f / 9.0f;
+      int width = rect->right - rect->left;
+      int height = rect->bottom - rect->top;
+
+      switch (wparam) {
+        case WMSZ_LEFT:
+        case WMSZ_RIGHT:
+          height = static_cast<int>(width / aspectRatio);
+          rect->bottom = rect->top + height;
+          break;
+        case WMSZ_TOP:
+        case WMSZ_BOTTOM:
+          width = static_cast<int>(height * aspectRatio);
+          rect->right = rect->left + width;
+          break;
+        case WMSZ_TOPLEFT:
+        case WMSZ_TOPRIGHT:
+        case WMSZ_BOTTOMLEFT:
+        case WMSZ_BOTTOMRIGHT: {
+          float currentRatio = static_cast<float>(width) / height;
+          if (currentRatio > aspectRatio) {
+            width = static_cast<int>(height * aspectRatio);
+            rect->right = rect->left + width;
+          } else {
+            height = static_cast<int>(width / aspectRatio);
+            rect->bottom = rect->top + height;
+          }
+          break;
+        }
+      }
+      return TRUE;
+    }
     case WM_DESTROY:
       window_handle_ = nullptr;
       Destroy();

@@ -1,10 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/pages/split_page.dart';
 import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:provider/provider.dart';
+import 'package:window_size/window_size.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isWindows || Platform.isMacOS) {
+    setWindowTitle('Your App');
+    setWindowMinSize(const Size(960, 540));
+    setWindowMaxSize(Size.infinite);
+    setWindowFrame(const Rect.fromLTWH(100, 100, 1280, 720)); // 16:9
+  }
+
   runApp(
     ChangeNotifierProvider(create: (_) => LanguageProvider(), child: MyApp()),
   );
