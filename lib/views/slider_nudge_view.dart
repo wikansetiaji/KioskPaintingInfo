@@ -48,63 +48,79 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.isOnRight ? widget.handleX + 180.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 460.sc : 560.sc),
+      left:
+          widget.isOnRight
+              ? widget.handleX + 180.sc
+              : widget.handleX -
+                  (context.watch<LanguageProvider>().isEnglish
+                      ? 460.sc
+                      : 560.sc),
       top: 0.5 * MediaQuery.of(context).size.height - 80.sc,
       child: AnimatedBuilder(
         animation: _scale,
         builder: (_, child) {
           return Transform.scale(scale: _scale.value, child: child);
         },
-        child: Row(
-          children: [
-            if (widget.isOnRight)
-              CustomPaint(
-                size: Size(14.sc, 35.sc),
-                painter: TrianglePainter(
-                  color: const Color(0xBBFFFAF1),
-                  direction: TriangleDirection.left,
+        child: GestureDetector(
+          onTap: () {
+            widget.onClose();
+          },
+          child: Row(
+            children: [
+              if (widget.isOnRight)
+                CustomPaint(
+                  size: Size(14.sc, 35.sc),
+                  painter: TrianglePainter(
+                    color: const Color(0xBBFFFAF1),
+                    direction: TriangleDirection.left,
+                  ),
                 ),
-              ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.sc, vertical: 12.sc),
-              decoration: BoxDecoration(
-                color: const Color(0xBBFFFAF1),
-                borderRadius: BorderRadius.circular(12.sc),
-                border: Border.all(color: const Color(0xFFFFFFFF), width: 4.sc),
-              ),
-              child: Row(
-                spacing: 20.sc,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () => widget.onClose(),
-                    child: Icon(
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.sc,
+                  vertical: 12.sc,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xBBFFFAF1),
+                  borderRadius: BorderRadius.circular(12.sc),
+                  border: Border.all(
+                    color: const Color(0xFFFFFFFF),
+                    width: 4.sc,
+                  ),
+                ),
+                child: Row(
+                  spacing: 20.sc,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
                       Icons.close,
                       color: const Color(0xFF212121),
                       size: 48.sc,
                     ),
-                  ),
-                  Text(
-                    context.watch<LanguageProvider>().isEnglish ? "Slide to see \ncomparison" : "Geser untuk lihat \nperbandingan",
-                    style: TextStyle(
-                      fontSize: 40.sc,
-                      color: const Color(0xFF212121),
-                      fontFamily: "Inter",
-                      fontWeight: FontWeight.normal
+                    Text(
+                      context.watch<LanguageProvider>().isEnglish
+                          ? "Slide to see \ncomparison"
+                          : "Geser untuk lihat \nperbandingan",
+                      style: TextStyle(
+                        fontSize: 40.sc,
+                        color: const Color(0xFF212121),
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            if (!widget.isOnRight)
-              CustomPaint(
-                size: Size(14.sc, 35.sc),
-                painter: TrianglePainter(
-                  color: const Color(0xBBFFFAF1),
-                  direction: TriangleDirection.right,
+                  ],
                 ),
               ),
-          ],
+              if (!widget.isOnRight)
+                CustomPaint(
+                  size: Size(14.sc, 35.sc),
+                  painter: TrianglePainter(
+                    color: const Color(0xBBFFFAF1),
+                    direction: TriangleDirection.right,
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

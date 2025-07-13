@@ -50,12 +50,16 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
     _subscription = EventBus.stream.listen((event) {
       String id = event.split("/").first;
-      if (id.isNotEmpty) {
-        final targetPosition = PaintingRepository().getPOIPairCenterX(id);
+      if (id.isNotEmpty &&
+          PaintingRepository().getPOIPairCenterX(id) != null) {
+        final targetPosition = PaintingRepository().getPOIPairCenterX(id)!;
         _animateToPosition(targetPosition);
       }
 
       setState(() {
+        if (id.isNotEmpty && PaintingRepository().getPOIPairCenterX(id) != null) {
+          return;
+        }
         if (event.contains("left")) {
           _showLeftSliderNudge = true;
           _showRightSliderNudge = false;
@@ -273,7 +277,9 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   handleX: handleX,
                   isOnRight: false,
                   onClose: () {
-                    _showLeftSliderNudge = false;
+                    setState(() {
+                      _showLeftSliderNudge = false;
+                    });
                   },
                 ),
 

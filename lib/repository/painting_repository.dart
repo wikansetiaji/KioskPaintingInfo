@@ -65,7 +65,7 @@ class PaintingRepository {
               "Gerbang lengkung yang indah ini mengarah ke taman rahasia tempat mawar kuno mekar sepanjang tahun. Legenda mengatakan bahwa pasangan yang melewatinya bersama akan diberkati kebahagiaan dan kemakmuran abadi.",
         },
       ),
-      x: 0.5,
+      x: 0.7,
       y: 0.95,
     ),
     PointOfInterest(
@@ -103,7 +103,7 @@ class PaintingRepository {
               "Dari jendela inilah, pelukis terkenal Elena Martinez menciptakan seri lukisan pemandangannya yang terkenal. Cahaya alami yang mengalir melalui bukaan ini menginspirasi beberapa karya paling terkenal abad ke-19.",
         },
       ),
-      x: 0.85,
+      x: 0.2,
       y: 0.5,
     ),
     PointOfInterest(
@@ -261,7 +261,7 @@ class PaintingRepository {
               "Lampu gantung kristal megah ini berisi lebih dari 2.000 kristal individu, masing-masing dipotong dengan tangan dan diposisikan dengan hati-hati. Ini dipesan oleh pemilik asli perkebunan dan membutuhkan waktu tiga tahun untuk diselesaikan oleh pengrajin ahli.",
         },
       ),
-      x: 0.05,
+      x: 0.4,
       y: 0.85,
     ),
     PointOfInterest(
@@ -299,7 +299,7 @@ class PaintingRepository {
               "Dipahat dari satu potong marmer Carrara, pegangan tangga ini menampilkan pola bunga rumit yang berubah secara halus saat melingkar ke atas. Setiap bunga mewakili anggota berbeda dari keluarga pendiri.",
         },
       ),
-      x: 0.2,
+      x: 0.8,
       y: 0.2,
     ),
     PointOfInterest(
@@ -423,9 +423,12 @@ class PaintingRepository {
     ),
   ];
 
-  double getPOIPairCenterX(String id) {
+  double? getPOIPairCenterX(String id) {
     PointOfInterest salehPOI = salehPointOfInterests.firstWhere((poi) => poi.id == id);
     PointOfInterest pienemanPOI = pienemanPointOfInterests.firstWhere((poi) => poi.id == id);
+    if (salehPOI.x > pienemanPOI.x) {
+      return null;
+    }
     return (salehPOI.x + pienemanPOI.x) / 2;
   }
 
