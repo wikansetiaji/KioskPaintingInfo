@@ -19,12 +19,16 @@ class _FunFactsViewState extends State<FunFactsView> {
   Widget build(BuildContext context) {
     return Container(
       width: 892.sc,
+      constraints: BoxConstraints(
+        maxHeight: MediaQuery.of(context).size.height * 0.8, // Add max height constraint
+      ),
       padding: EdgeInsets.all(48.sc),
       decoration: BoxDecoration(
         color: Color(0xFF38383A),
         borderRadius: BorderRadius.circular(20.sc),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min, // Important change
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text.rich(
@@ -48,44 +52,82 @@ class _FunFactsViewState extends State<FunFactsView> {
           ),
           Divider(color: Color(0xFF4C4C4C)),
           SizedBox(height: 10.sc),
-          ...widget.funFacts.asMap().entries.map((entry) {
-            final index = entry.key;
-            final fact = entry.value;
-            final isExpanded = _selectedFunFact == index;
+          Flexible( // Changed from Expanded to Flexible
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min, // Important change
+                children: widget.funFacts.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final fact = entry.value;
+                  final isExpanded = _selectedFunFact == index;
 
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _selectedFunFact = isExpanded ? null : index;
-                    });
-                  },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                    width: 892.sc,
-                    padding: EdgeInsets.all(32.sc),
-                    decoration: BoxDecoration(
-                      color: Color(0xFF4C4C4C),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12.sc),
-                        topRight: Radius.circular(12.sc),
-                        bottomLeft:
-                            isExpanded
-                                ? Radius.circular(0.0)
-                                : Radius.circular(12.sc),
-                        bottomRight:
-                            isExpanded
-                                ? Radius.circular(0.0)
-                                : Radius.circular(12.sc),
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _selectedFunFact = isExpanded ? null : index;
+                          });
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                          width: 892.sc,
+                          padding: EdgeInsets.all(32.sc),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF4C4C4C),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12.sc),
+                              topRight: Radius.circular(12.sc),
+                              bottomLeft: isExpanded
+                                  ? Radius.circular(0.0)
+                                  : Radius.circular(12.sc),
+                              bottomRight: isExpanded
+                                  ? Radius.circular(0.0)
+                                  : Radius.circular(12.sc),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  fact.title.text(context).toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 36.sc,
+                                    color: Colors.white,
+                                    fontFamily: "Inter",
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                isExpanded ? Icons.expand_less : Icons.expand_more,
+                                color: Colors.white,
+                                size: 48.sc,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
+                      AnimatedCrossFade(
+                        duration: Duration(milliseconds: 100),
+                        crossFadeState: isExpanded
+                            ? CrossFadeState.showSecond
+                            : CrossFadeState.showFirst,
+                        firstChild: SizedBox(height: 0, width: 892.sc),
+                        secondChild: Container(
+                          width: 892.sc,
+                          padding: EdgeInsets.all(32.sc),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF2C2B2B),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12.sc),
+                              bottomRight: Radius.circular(12.sc),
+                            ),
+                          ),
                           child: Text(
-                            fact.title.text(context).toUpperCase(),
+                            fact.description.text(context),
                             style: TextStyle(
                               fontSize: 36.sc,
                               color: Colors.white,
@@ -94,47 +136,14 @@ class _FunFactsViewState extends State<FunFactsView> {
                             ),
                           ),
                         ),
-                        Icon(
-                          isExpanded ? Icons.expand_less : Icons.expand_more,
-                          color: Colors.white,
-                          size: 48.sc,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                AnimatedCrossFade(
-                  duration: Duration(milliseconds: 100),
-                  crossFadeState:
-                      isExpanded
-                          ? CrossFadeState.showSecond
-                          : CrossFadeState.showFirst,
-                  firstChild: SizedBox(height: 0, width: 892.sc),
-                  secondChild: Container(
-                    width: 892.sc,
-                    padding: EdgeInsets.all(32.sc),
-                    decoration: BoxDecoration(
-                      color: Color(0xFF2C2B2B),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(12.sc),
-                        bottomRight: Radius.circular(12.sc),
                       ),
-                    ),
-                    child: Text(
-                      fact.description.text(context),
-                      style: TextStyle(
-                        fontSize: 36.sc,
-                        color: Colors.white,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 32.sc),
-              ],
-            );
-          }),
+                      SizedBox(height: 32.sc),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
         ],
       ),
     );
