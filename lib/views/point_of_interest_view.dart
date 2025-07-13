@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:kiosk_painting_info/repository/painting_repository.dart';
+import 'package:kiosk_painting_info/services/event_bus.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 
 class PointOfInterestView extends StatefulWidget {
@@ -24,10 +27,19 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _pulseAnimation;
+  late StreamSubscription _subscription;
+  bool _dimmed = false;
 
   @override
   void initState() {
     super.initState();
+
+    _subscription = EventBus.stream.listen((event) {
+      setState(() {
+        _dimmed = !event.contains(widget.pointOfInterest.id) && event.isNotEmpty;
+      });
+    });
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -42,6 +54,7 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
   @override
   void dispose() {
     _controller.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
@@ -65,11 +78,11 @@ class _PointOfInterestViewState extends State<PointOfInterestView>
                     height: 100.sc,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white.withAlpha(120),
+                      color: Colors.white.withAlpha(_dimmed ? 55 : 120),
                     ),
                   ),
                 ),
-                CircleAvatar(radius: 25.sc, backgroundColor: Colors.white),
+                CircleAvatar(radius: 25.sc, backgroundColor: Colors.white.withAlpha(_dimmed ? 50 : 255)),
               ],
             );
           },
