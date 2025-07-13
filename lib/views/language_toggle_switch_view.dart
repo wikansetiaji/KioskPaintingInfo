@@ -52,7 +52,7 @@ class LanguageToggleSwitch extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Archivo',
                         fontSize: 48.sc,
-                        letterSpacing: -4,
+                        letterSpacing: -0.5,
                       ),
                     ),
                   ),
