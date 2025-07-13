@@ -18,7 +18,11 @@ class SplitPage extends StatefulWidget {
 }
 
 class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
+  late AnimationController _slideController;
+  late Animation<double> _slideAnimation;
   double _dragPosition = 0.5;
+  bool _isAnimating = false;
+
   String? _selectedPainting;
   bool _showLeftSliderNudge = false;
   bool _showRightSliderNudge = false;
@@ -45,6 +49,12 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
     _idleTimer.reset();
 
     _subscription = EventBus.stream.listen((event) {
+      String id = event.split("/").first;
+      if (id.isNotEmpty) {
+        final targetPosition = PaintingRepository().getPOIPairCenterX(id);
+        _animateToPosition(targetPosition);
+      }
+
       setState(() {
         if (event.contains("left")) {
           _showLeftSliderNudge = true;
@@ -58,6 +68,29 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
         }
       });
     });
+
+    _slideController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+
+    _slideAnimation =
+        Tween<double>(
+            begin: _dragPosition,
+            end: _dragPosition,
+          ).animate(_slideController)
+          ..addListener(() {
+            if (!_isAnimating) return;
+            setState(() {
+              _dragPosition = _slideAnimation.value;
+            });
+          })
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed ||
+                status == AnimationStatus.dismissed) {
+              _isAnimating = false;
+            }
+          });
 
     // Modal fade animation
     _modalAnimationController = AnimationController(
@@ -80,6 +113,22 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
     );
   }
 
+  void _animateToPosition(double targetPosition) {
+    // Stop any ongoing animation
+    _slideController.stop();
+
+    // Update the animation with new values
+    _slideAnimation = Tween<double>(
+      begin: _dragPosition,
+      end: targetPosition.clamp(0.0, 1.0),
+    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
+
+    // Reset the controller and start the animation
+    _slideController.reset();
+    _isAnimating = true;
+    _slideController.forward();
+  }
+
   void _onIdleTimeout() {
     setState(() {
       _showCoverScreen = true;
@@ -95,6 +144,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    _slideController.dispose();
     _modalAnimationController.dispose();
     _scaleAnimationController.dispose();
     _transformationController.dispose();
@@ -137,6 +187,10 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
         body: GestureDetector(
           onHorizontalDragUpdate: (details) {
             if (!_showCoverScreen) {
+              if (_isAnimating) {
+                _slideController.stop();
+                _isAnimating = false;
+              }
               setState(() {
                 if (_showLeftSliderNudge) {
                   _showLeftSliderNudge = false;
@@ -173,7 +227,8 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       },
                     ),
                     uiOnRight: true,
-                    pointOfInterests: PaintingRepository().pienemanPointOfInterests,
+                    pointOfInterests:
+                        PaintingRepository().pienemanPointOfInterests,
                     funFacts: PaintingRepository().pienemanFunFacts,
                     onSelectPainting: _showPainting,
                   ),
@@ -193,7 +248,8 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                       },
                     ),
                     uiOnRight: false,
-                    pointOfInterests: PaintingRepository().salehPointOfInterests,
+                    pointOfInterests:
+                        PaintingRepository().salehPointOfInterests,
                     funFacts: PaintingRepository().salehFunFacts,
                     onSelectPainting: _showPainting,
                   ),

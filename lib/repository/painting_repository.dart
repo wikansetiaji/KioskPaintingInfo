@@ -423,5 +423,11 @@ class PaintingRepository {
     ),
   ];
 
+  double getPOIPairCenterX(String id) {
+    PointOfInterest salehPOI = salehPointOfInterests.firstWhere((poi) => poi.id == id);
+    PointOfInterest pienemanPOI = pienemanPointOfInterests.firstWhere((poi) => poi.id == id);
+    return (salehPOI.x + pienemanPOI.x) / 2;
+  }
+
   PaintingRepository._internal();
 }

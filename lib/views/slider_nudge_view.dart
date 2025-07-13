@@ -48,7 +48,7 @@ class _SliderNudgeViewState extends State<SliderNudgeView>
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.isOnRight ? widget.handleX + 100.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 460.sc : 560.sc),
+      left: widget.isOnRight ? widget.handleX + 180.sc : widget.handleX - (context.watch<LanguageProvider>().isEnglish ? 460.sc : 560.sc),
       top: 0.5 * MediaQuery.of(context).size.height - 80.sc,
       child: AnimatedBuilder(
         animation: _scale,
