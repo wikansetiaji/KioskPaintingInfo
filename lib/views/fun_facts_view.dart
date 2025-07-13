@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/repository/painting_repository.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
-import 'package:kiosk_painting_info/views/painting_view.dart';
 
 class FunFactsView extends StatefulWidget {
   const FunFactsView({super.key, required this.name, required this.funFacts});

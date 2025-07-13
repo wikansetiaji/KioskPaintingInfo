@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/repository/painting_repository.dart';
 import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
-import 'package:kiosk_painting_info/views/painting_view.dart';
 import 'package:kiosk_painting_info/views/triangle_direction_view.dart';
 import 'package:provider/provider.dart';
 

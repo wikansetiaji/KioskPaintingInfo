@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:kiosk_painting_info/repository/painting_repository.dart';
 import 'package:kiosk_painting_info/services/language_provider.dart';
 import 'package:kiosk_painting_info/services/size_config.dart';
 import 'package:kiosk_painting_info/views/bottom_button_view.dart';
@@ -10,43 +11,6 @@ import 'package:kiosk_painting_info/views/poi_nudge_view.dart';
 import 'package:kiosk_painting_info/views/point_of_interest_view.dart';
 import 'package:kiosk_painting_info/services/event_bus.dart';
 import 'package:provider/provider.dart';
-
-class TranslatedString {
-  final Map<AppLanguage, String> strings;
-
-  TranslatedString({required this.strings});
-
-  String text(BuildContext context) {
-    return strings[context.watch<LanguageProvider>().language] ??
-        strings[AppLanguage.en] ??
-        strings.values.first;
-  }
-}
-
-class PointOfInterest {
-  final String id;
-  final TranslatedString name;
-  final TranslatedString description;
-  final double x;
-  final double y;
-  bool showNudge = false;
-
-  PointOfInterest({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.x,
-    required this.y,
-    this.showNudge = false,
-  });
-}
-
-class FunFact {
-  final TranslatedString title;
-  final TranslatedString description;
-
-  FunFact({required this.title, required this.description});
-}
 
 class PaintingView extends StatefulWidget {
   const PaintingView({
