@@ -162,7 +162,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: PaintingView(
-                    imageAsset: 'assets/pieneman-painting.jpg',
+                    imageAsset: 'assets/pieneman-painting.png',
                     name: TranslatedString(
                       strings: {
                         AppLanguage.en:
@@ -378,7 +378,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                   alignment: Alignment.centerLeft,
                   widthFactor: _dragPosition,
                   child: PaintingView(
-                    imageAsset: 'assets/saleh-painting.jpg',
+                    imageAsset: 'assets/saleh-painting.png',
                     name: TranslatedString(
                       strings: {
                         AppLanguage.en: "PENANGKAPAN PANGERAN DIPONEGORO",
