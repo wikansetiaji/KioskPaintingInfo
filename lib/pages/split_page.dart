@@ -207,14 +207,14 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                 }
 
                 bool reachedLeftEdge =
-                    details.delta.dx < 0 && _dragPosition <= 0.05;
+                    details.delta.dx < 0 && _dragPosition <= 0.025;
                 bool reachedRightEdge =
-                    details.delta.dx > 0 && _dragPosition >= 0.95;
+                    details.delta.dx > 0 && _dragPosition >= 0.985;
                     
                 if (reachedLeftEdge) {
-                  _dragPosition = 0.05;
+                  _dragPosition = 0.025;
                 } else if (reachedRightEdge) {
-                  _dragPosition = 0.95;
+                  _dragPosition = 0.985;
                 } else {
                   _dragPosition += details.delta.dx / screenWidth;
                 }
@@ -224,7 +224,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
           },
           onTapDown: (details) {
             print(
-              'Tapped at relative: (${details.localPosition.dx / MediaQuery.of(context).size.width},${details.localPosition.dy / MediaQuery.of(context).size.height})',
+              'x: ${details.localPosition.dx / MediaQuery.of(context).size.width}, \ny: ${details.localPosition.dy / MediaQuery.of(context).size.height}',
             );
           },
           child: Stack(

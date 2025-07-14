@@ -46,85 +46,391 @@ class PaintingRepository {
     return _singleton;
   }
 
-  // Pieneman
-
   final List<PointOfInterest> pienemanPointOfInterests = [
     PointOfInterest(
-      id: "1",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Mysterious Garden Gateway",
-          AppLanguage.id: "Gerbang Taman Misterius",
-        },
-      ),
+      id: "pov",
+      name: TranslatedString(strings: {AppLanguage.en: "Point of View"}),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "This ornate archway leads to a secret garden where ancient roses bloom year-round. Legend says that lovers who pass through together will be blessed with eternal happiness and prosperity.",
+              "Focused on the colonial perspective, portraying victory through Diponegoro's capture.",
           AppLanguage.id:
-              "Gerbang lengkung yang indah ini mengarah ke taman rahasia tempat mawar kuno mekar sepanjang tahun. Legenda mengatakan bahwa pasangan yang melewatinya bersama akan diberkati kebahagiaan dan kemakmuran abadi.",
+              "Difokuskan untuk kolonial yang menunjukkan kemenangannya lewat penangkapan Diponegoro",
         },
       ),
-      x: 0.7,
-      y: 0.95,
+      x: 0.0817169189453125,
+      y: 0.49489703757225434,
     ),
     PointOfInterest(
-      id: "2",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Weathered Stone Fountain",
-          AppLanguage.id: "Air Mancur Batu yang Lapuk",
-        },
-      ),
+      id: "main_character",
+      name: TranslatedString(strings: {AppLanguage.en: "Main Character Focus"}),
       description: TranslatedString(
         strings: {
-          AppLanguage.en:
-              "Built in 1847, this fountain was once the centerpiece of the estate's main courtyard. The intricate carvings depict scenes from classical mythology, including the story of Persephone and her journey between worlds.",
+          AppLanguage.en: "Highlights General De Kock as noble and calm.",
           AppLanguage.id:
-              "Dibangun pada tahun 1847, air mancur ini dulunya menjadi pusat halaman utama perkebunan. Ukiran rumitnya menggambarkan adegan dari mitologi klasik, termasuk kisah Persephone dan perjalanannya antara dunia.",
+              "Lukisan Nicolaas menonjolkan General De Kock yang digambarkan sebagai orang yang mulia dan tenang",
         },
       ),
-      x: 0.85,
-      y: 0.91,
+      x: 0.5592193603515625,
+      y: 0.4990234375,
     ),
     PointOfInterest(
-      id: "3",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Artist's Studio Window",
-          AppLanguage.id: "Jendela Studio Seniman",
-        },
-      ),
+      id: "viewer_position",
+      name: TranslatedString(strings: {AppLanguage.en: "Viewer's Position"}),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "From this very window, the renowned painter Elena Martinez created her famous series of landscape paintings. The natural light streaming through this opening inspired some of the most celebrated works of the 19th century.",
-          AppLanguage.id:
-              "Dari jendela inilah, pelukis terkenal Elena Martinez menciptakan seri lukisan pemandangannya yang terkenal. Cahaya alami yang mengalir melalui bukaan ini menginspirasi beberapa karya paling terkenal abad ke-19.",
+              "The perspective is from the Dutch colonial viewpoint.",
+          AppLanguage.id: "Lukisan ini menempatkan diri pada Belanda",
         },
       ),
-      x: 0.2,
-      y: 0.5,
+      x: 0.425921630859375,
+      y: 0.47862287752890176,
     ),
     PointOfInterest(
-      id: "4",
-      name: TranslatedString(
+      id: "diponegoro_posture",
+      name: TranslatedString(strings: {AppLanguage.en: "Diponegoro's Posture"}),
+      description: TranslatedString(
         strings: {
-          AppLanguage.en: "The Ancient Oak Tree",
-          AppLanguage.id: "Pohon Ek Kuno",
+          AppLanguage.en:
+              "Depicted as submissive, head bowed and hands lowered — a symbol of surrender.",
+          AppLanguage.id:
+              "Diponegoro digambarkan tunduk dengan Belanda yang digambarkan dengan kepala tertunduk serta tangan ke bawah yang berarti menyerah",
         },
+      ),
+      x: 0.5565155029296875,
+      y: 0.5676481213872833,
+    ),
+    PointOfInterest(
+      id: "de_kock_posture",
+      name: TranslatedString(strings: {AppLanguage.en: "De Kock's Posture"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Taller, placed at the center of the composition — showing dominance.",
+          AppLanguage.id:
+              "Digambarkan lebih tinggi, dan berada di pusat komposisi lukisan",
+        },
+      ),
+      x: 0.6402862548828125,
+      y: 0.3479610729768786,
+    ),
+    PointOfInterest(
+      id: "javanese_followers",
+      name: TranslatedString(strings: {AppLanguage.en: "Javanese Followers"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en: "Depicted as few in number and expressionless.",
+          AppLanguage.id:
+              "Digambarkan dengan jumlah yang sedikit dan tanpa ekspresi.",
+        },
+      ),
+      x: 0.3455291748046875,
+      y: 0.468433887283237,
+    ),
+    PointOfInterest(
+      id: "dutch_figures",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Dutch Figures Depicted"},
       ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "This majestic oak tree has stood here for over 300 years, witnessing countless seasons and historical events. Local folklore claims that wishes made while touching its bark during the full moon will come true within a year.",
+              "Heroic and authoritative, reinforcing Dutch superiority over Indonesia.",
           AppLanguage.id:
-              "Pohon ek megah ini telah berdiri di sini selama lebih dari 300 tahun, menyaksikan banyak musim dan peristiwa sejarah. Cerita rakyat setempat mengklaim bahwa keinginan yang dibuat sambil menyentuh kulitnya saat bulan purnama akan terkabul dalam setahun.",
+              "Gagah dan berwibawa, menunjukkan kekuasaan Belanda terhadap Indonesia",
         },
       ),
-      x: 0.6,
-      y: 0.4,
-      showNudge: false,
+      x: 0.7018707275390625,
+      y: 0.4705224891618497,
+    ),
+    PointOfInterest(
+      id: "cultural_symbolism",
+      name: TranslatedString(strings: {AppLanguage.en: "Cultural Symbolism"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Costumes are culturally inaccurate (resembling Arab attire), showing colonial neglect of local culture.",
+          AppLanguage.id:
+              "Busana kurang akurat, seperti Arab, menggambarkan budaya Indonesia yang sering diabaikan kolonialis",
+        },
+      ),
+      x: 0.33896484375,
+      y: 0.6253104678468208,
+    ),
+    PointOfInterest(
+      id: "lighting_color",
+      name: TranslatedString(strings: {AppLanguage.en: "Lighting & Color"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Neutral, flat, and orderly — conveying a peaceful surrender.",
+          AppLanguage.id:
+              "Netral, datar, teratur, menunjukkan penangkapan yang damai",
+        },
+      ),
+      x: 0.1079833984375,
+      y: 0.2452583092485549,
+    ),
+    PointOfInterest(
+      id: "purpose",
+      name: TranslatedString(strings: {AppLanguage.en: "Painting's Purpose"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en: "Propaganda to present a peaceful conquest.",
+          AppLanguage.id: "Propaganda untuk menunjukkan penaklukan damai",
+        },
+      ),
+      x: 0.1772674560546875,
+      y: 0.8066462698699421,
+    ),
+    PointOfInterest(
+      id: "character_placement",
+      name: TranslatedString(strings: {AppLanguage.en: "Character Placement"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Dutch figures are in the center — symbolizing control and authority.",
+          AppLanguage.id:
+              "Belanda berada di tengah yang menunjukkan bahwa Belanda memiliki pusat kuasa",
+        },
+      ),
+      x: 0.4726165771484375,
+      y: 0.533146676300578,
+    ),
+    PointOfInterest(
+      id: "explicit_message",
+      name: TranslatedString(strings: {AppLanguage.en: "Explicit Message"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en: "A peaceful surrender with the Dutch as heroes.",
+          AppLanguage.id:
+              "Penyerahan damai dan menunjukkan bahwa Belanda sebagai pahlawan",
+        },
+      ),
+      x: 0.189056396484375,
+      y: 0.607246884031792,
+    ),
+    PointOfInterest(
+      id: "implied_message",
+      name: TranslatedString(strings: {AppLanguage.en: "Implied Message:"}),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Erases the fact that Diponegoro was deceived and arrested unfairly.",
+          AppLanguage.id:
+              "Menghapus fakta bahwa Diponegoro ditipu dan ditangkap dengan licik",
+        },
+      ),
+      x: 0.5610260009765625,
+      y: 0.7902366329479769,
+    ),
+  ];
+
+  final List<PointOfInterest> salehPointOfInterests = [
+    PointOfInterest(
+      id: "pov",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Point of View"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Focused on the local (Javanese) perspective, showing resistance and betrayal during the arrest.",
+          AppLanguage.id:
+              "Difokuskan kepada orang lokal atau jawa, menunjukkan bahwa saat penangkapan Diponegoro ada perlawanan dan pengkhianatan",
+        },
+      ),
+      x: 0.1427215576171875,
+      y: 0.3453926571531792,
+    ),
+    PointOfInterest(
+      id: "main_character",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Main Character Focus"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Highlights Prince Diponegoro as emotional yet dignified.",
+          AppLanguage.id:
+              "Lukisan Raden Saleh menonjolkan Pangeran Diponegoro yang digambarkan sebagai orang yang emosional dan bermartabat",
+        },
+      ),
+      x: 0.3578399658203125,
+      y: 0.3797416907514451,
+    ),
+    PointOfInterest(
+      id: "viewer_position",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Viewer's Position"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "The perspective is from Diponegoro's and his followers' side.",
+          AppLanguage.id:
+              "Lukisan ini menempatkan diri pada Diponegoro dan orang-orangnya",
+        },
+      ),
+      x: 0.6277496337890625,
+      y: 0.6130667449421965,
+    ),
+    PointOfInterest(
+      id: "diponegoro_posture",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Diponegoro's Posture"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Depicted with proud, honest, and emotional posture, shocked by the betrayal in the agreement.",
+          AppLanguage.id:
+              "Diponegoro digambarkan dengan postur yang bangga, jujur, dan emosional karena amarah atau terkejut yang dikarenakan oleh pengkhianatan Belanda dalam perjanjian mereka",
+        },
+      ),
+      x: 0.3034942626953125,
+      y: 0.3529680726156069,
+    ),
+    PointOfInterest(
+      id: "de_kock_posture",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "De Kock's Posture"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Smaller in scale, positioned on the left (symbolically weak in Javanese culture).",
+          AppLanguage.id:
+              "Postur lebih kecil dan berlokasi di sisi kiri (secara simbolis lemah dalam budaya Jawa), menunjukkan tidak dominan",
+        },
+      ),
+      x: 0.40419921875,
+      y: 0.32315751445086704,
+    ),
+    PointOfInterest(
+      id: "javanese_followers",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Javanese Followers"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Shown emotionally expressive, crying, holding Diponegoro's hand — symbolizing humanity and solidarity.",
+          AppLanguage.id:
+              "Digambarkan banyak dan emosional, menangis memegang tangan Diponegoro yang ditangkap, memberikan sisi kemanusiaan dan solidaritas dari rakyat terhadap pahlawan mereka",
+        },
+      ),
+      x: 0.3213897705078125,
+      y: 0.508930184248555,
+    ),
+    PointOfInterest(
+      id: "dutch_figures",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Dutch Figures Depicted"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Shown with large heads, stiff expressions, and sly looks — a subtle critique of colonial power.",
+          AppLanguage.id:
+              "Kepala besar, ekspresi kaku, dan terlihat licik yang secara halus sedang mengkritik kolonialisme melalui bentuk tubuh dan ekspresi wajah.",
+        },
+      ),
+      x: 0.1437103271484375,
+      y: 0.3441564306358382,
+    ),
+    PointOfInterest(
+      id: "cultural_symbolism",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Cultural Symbolism"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Diponegoro wears blangkon, batik, and tasbih — highlighting Javanese and Islamic identity.",
+          AppLanguage.id:
+              "Diponegoro menggunakan blangkon, batik, dan tasbih yang sangat menggambarkan Jawa dan Islam, menekankan identitas budaya lokal Indonesia.",
+        },
+      ),
+      x: 0.764678955078125,
+      y: 0.5661014270231214,
+    ),
+    PointOfInterest(
+      id: "lighting_color",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Lighting & Color"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Strong contrast between light and dark; spotlight on Diponegoro emphasizes suffering and inner conflict.",
+          AppLanguage.id:
+              "Gelap-terang kontras, sorot ke Diponegoro menonjolkan penderitaan dan konflik batin Diponegoro.",
+        },
+      ),
+      x: 0.866357421875,
+      y: 0.28325392882947975,
+    ),
+    PointOfInterest(
+      id: "purpose",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Painting's Purpose"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en: "A subtle critique of colonialism.",
+          AppLanguage.id: "Kritik terselubung terhadap kolonialisme.",
+        },
+      ),
+      x: 0.1894927978515625,
+      y: 0.7304913294797688,
+    ),
+    PointOfInterest(
+      id: "character_placement",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Character Placement"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "Dutch figures on the left, Indonesians in the center — symbolizing Dutch weakness (in Javanese terms).",
+          AppLanguage.id:
+              "Belanda di kiri dan Indonesia di tengah, menunjukkan posisi lemah menurut simbolisme Jawa",
+        },
+      ),
+      x: 0.2567474365234375,
+      y: 0.7352781791907514,
+    ),
+    PointOfInterest(
+      id: "explicit_message",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Explicit Message"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en: "An emotional arrest and betrayal.",
+          AppLanguage.id: "Penangkapan penuh emosi dan pnegkhianatan",
+        },
+      ),
+      x: 0.473004150390625,
+      y: 0.6617876174132948,
+    ),
+    PointOfInterest(
+      id: "implied_message",
+      name: TranslatedString(
+        strings: {AppLanguage.en: "Implied Message"},
+      ),
+      description: TranslatedString(
+        strings: {
+          AppLanguage.en:
+              "An early form of nationalism — uplifting Indonesian dignity through symbols and composition.",
+          AppLanguage.id:
+              "Bentuk awal nasionalisme–mengangkat harga diri bangsa secara halus melalui simbol dan lukisan",
+        },
+      ),
+      x: 0.325970458984375,
+      y: 0.7865731123554913,
     ),
   ];
 
@@ -243,87 +549,6 @@ class PaintingRepository {
     ),
   ];
 
-  // Saleh
-  List<PointOfInterest> salehPointOfInterests = [
-    PointOfInterest(
-      id: "1",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Grand Ballroom Chandelier",
-          AppLanguage.id: "Lampu Gantung Balai Utama",
-        },
-      ),
-      description: TranslatedString(
-        strings: {
-          AppLanguage.en:
-              "This magnificent crystal chandelier contains over 2,000 individual crystals, each hand-cut and carefully positioned. It was commissioned by the estate's original owner and took master craftsmen three years to complete.",
-          AppLanguage.id:
-              "Lampu gantung kristal megah ini berisi lebih dari 2.000 kristal individu, masing-masing dipotong dengan tangan dan diposisikan dengan hati-hati. Ini dipesan oleh pemilik asli perkebunan dan membutuhkan waktu tiga tahun untuk diselesaikan oleh pengrajin ahli.",
-        },
-      ),
-      x: 0.4,
-      y: 0.85,
-    ),
-    PointOfInterest(
-      id: "2",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Hidden Library Alcove",
-          AppLanguage.id: "Ceruk Perpustakaan Tersembunyi",
-        },
-      ),
-      description: TranslatedString(
-        strings: {
-          AppLanguage.en:
-              "Behind this seemingly ordinary bookshelf lies a secret reading nook where the estate's children would hide during their lessons. The alcove contains first-edition books dating back to the 1600s, including rare manuscripts and poetry collections.",
-          AppLanguage.id:
-              "Di balik rak buku yang tampaknya biasa ini terdapat sudut baca rahasia tempat anak-anak perkebunan bersembunyi selama pelajaran mereka. Ceruk ini berisi buku edisi pertama yang berasal dari tahun 1600-an, termasuk manuskrip langka dan koleksi puisi.",
-        },
-      ),
-      x: 0.5,
-      y: 0.7,
-    ),
-    PointOfInterest(
-      id: "3",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Marble Staircase Banister",
-          AppLanguage.id: "Pegangan Tangga Marmer",
-        },
-      ),
-      description: TranslatedString(
-        strings: {
-          AppLanguage.en:
-              "Carved from a single piece of Carrara marble, this banister features intricate floral patterns that change subtly as they spiral upward. Each flower represents a different member of the founding family.",
-          AppLanguage.id:
-              "Dipahat dari satu potong marmer Carrara, pegangan tangga ini menampilkan pola bunga rumit yang berubah secara halus saat melingkar ke atas. Setiap bunga mewakili anggota berbeda dari keluarga pendiri.",
-        },
-      ),
-      x: 0.8,
-      y: 0.2,
-    ),
-    PointOfInterest(
-      id: "4",
-      name: TranslatedString(
-        strings: {
-          AppLanguage.en: "The Portrait Gallery Corner",
-          AppLanguage.id: "Sudut Galeri Potret",
-        },
-      ),
-      description: TranslatedString(
-        strings: {
-          AppLanguage.en:
-              "This corner houses portraits of five generations of the estate's inhabitants. The paintings are arranged chronologically, telling the visual story of changing fashion, artistic styles, and family traditions across two centuries.",
-          AppLanguage.id:
-              "Sudut ini menampung potret lima generasi penghuni perkebunan. Lukisan-lukisan disusun secara kronologis, menceritakan kisah visual tentang perubahan mode, gaya seni, dan tradisi keluarga selama dua abad.",
-        },
-      ),
-      x: 0.3,
-      y: 0.3,
-      showNudge: true,
-    ),
-  ];
-
   List<FunFact> salehFunFacts = [
     FunFact(
       title: TranslatedString(
@@ -424,8 +649,12 @@ class PaintingRepository {
   ];
 
   double? getPOIPairCenterX(String id) {
-    PointOfInterest salehPOI = salehPointOfInterests.firstWhere((poi) => poi.id == id);
-    PointOfInterest pienemanPOI = pienemanPointOfInterests.firstWhere((poi) => poi.id == id);
+    PointOfInterest salehPOI = salehPointOfInterests.firstWhere(
+      (poi) => poi.id == id,
+    );
+    PointOfInterest pienemanPOI = pienemanPointOfInterests.firstWhere(
+      (poi) => poi.id == id,
+    );
     if (salehPOI.x > pienemanPOI.x) {
       return null;
     }
