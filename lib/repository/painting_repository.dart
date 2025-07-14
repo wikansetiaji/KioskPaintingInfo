@@ -49,7 +49,12 @@ class PaintingRepository {
   final List<PointOfInterest> pienemanPointOfInterests = [
     PointOfInterest(
       id: "pov",
-      name: TranslatedString(strings: {AppLanguage.en: "Point of View"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Point of View",
+          AppLanguage.id: "Sudut Pandang",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -63,7 +68,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "main_character",
-      name: TranslatedString(strings: {AppLanguage.en: "Main Character Focus"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Main Character Focus",
+          AppLanguage.id: "Fokus Tokoh",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en: "Highlights General De Kock as noble and calm.",
@@ -76,7 +86,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "viewer_position",
-      name: TranslatedString(strings: {AppLanguage.en: "Viewer's Position"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Viewer's Position",
+          AppLanguage.id: "Viewer's Position",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -89,7 +104,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "diponegoro_posture",
-      name: TranslatedString(strings: {AppLanguage.en: "Diponegoro's Posture"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Diponegoro's Posture",
+          AppLanguage.id: "Postur Diponegoro",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -103,7 +123,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "de_kock_posture",
-      name: TranslatedString(strings: {AppLanguage.en: "De Kock's Posture"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "De Kock's Posture",
+          AppLanguage.id: "Postur De Kock",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -117,7 +142,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "javanese_followers",
-      name: TranslatedString(strings: {AppLanguage.en: "Javanese Followers"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Javanese Followers",
+          AppLanguage.id: "Penggambaran Pengikut Jawa",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en: "Depicted as few in number and expressionless.",
@@ -131,7 +161,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "dutch_figures",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Dutch Figures Depicted"},
+        strings: {
+          AppLanguage.en: "Dutch Figures Depicted",
+          AppLanguage.id: "Penggambaran orang Belanda",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -146,7 +179,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "cultural_symbolism",
-      name: TranslatedString(strings: {AppLanguage.en: "Cultural Symbolism"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Cultural Symbolism",
+          AppLanguage.id: "Simbolisme Budaya",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -160,7 +198,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "lighting_color",
-      name: TranslatedString(strings: {AppLanguage.en: "Lighting & Color"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Lighting & Color",
+          AppLanguage.id: "Warna & Pencahayaan",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -174,7 +217,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "purpose",
-      name: TranslatedString(strings: {AppLanguage.en: "Painting's Purpose"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Painting's Purpose",
+          AppLanguage.id: "Tujuan Lukisan",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en: "Propaganda to present a peaceful conquest.",
@@ -186,7 +234,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "character_placement",
-      name: TranslatedString(strings: {AppLanguage.en: "Character Placement"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Character Placement",
+          AppLanguage.id: "Penempatan tokoh",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -200,7 +253,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "explicit_message",
-      name: TranslatedString(strings: {AppLanguage.en: "Explicit Message"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Explicit Message",
+          AppLanguage.id: "Makna tersurat",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en: "A peaceful surrender with the Dutch as heroes.",
@@ -213,7 +271,12 @@ class PaintingRepository {
     ),
     PointOfInterest(
       id: "implied_message",
-      name: TranslatedString(strings: {AppLanguage.en: "Implied Message:"}),
+      name: TranslatedString(
+        strings: {
+          AppLanguage.en: "Implied Message",
+          AppLanguage.id: "Makna Tersirat",
+        },
+      ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
@@ -231,7 +294,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "pov",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Point of View"},
+        strings: {
+          AppLanguage.en: "Point of View",
+          AppLanguage.id: "Sudut Pandang",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -247,7 +313,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "main_character",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Main Character Focus"},
+        strings: {
+          AppLanguage.en: "Main Character Focus",
+          AppLanguage.id: "Fokus Tokoh",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -263,7 +332,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "viewer_position",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Viewer's Position"},
+        strings: {
+          AppLanguage.en: "Viewer's Position",
+          AppLanguage.id: "Viewer's Position",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -279,7 +351,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "diponegoro_posture",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Diponegoro's Posture"},
+        strings: {
+          AppLanguage.en: "Diponegoro's Posture",
+          AppLanguage.id: "Postur Diponegoro",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -295,7 +370,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "de_kock_posture",
       name: TranslatedString(
-        strings: {AppLanguage.en: "De Kock's Posture"},
+        strings: {
+          AppLanguage.en: "De Kock's Posture",
+          AppLanguage.id: "Postur De Kock",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -311,7 +389,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "javanese_followers",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Javanese Followers"},
+        strings: {
+          AppLanguage.en: "Javanese Followers",
+          AppLanguage.id: "Penggambaran Pengikut Jawa",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -327,7 +408,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "dutch_figures",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Dutch Figures Depicted"},
+        strings: {
+          AppLanguage.en: "Dutch Figures Depicted",
+          AppLanguage.id: "Penggambaran orang Belanda",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -343,7 +427,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "cultural_symbolism",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Cultural Symbolism"},
+        strings: {
+          AppLanguage.en: "Cultural Symbolism",
+          AppLanguage.id: "Simbolisme Budaya",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -359,7 +446,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "lighting_color",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Lighting & Color"},
+        strings: {
+          AppLanguage.en: "Lighting & Color",
+          AppLanguage.id: "Warna & Pencahayaan",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -375,7 +465,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "purpose",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Painting's Purpose"},
+        strings: {
+          AppLanguage.en: "Painting's Purpose",
+          AppLanguage.id: "Tujuan Lukisan",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -389,7 +482,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "character_placement",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Character Placement"},
+        strings: {
+          AppLanguage.en: "Character Placement",
+          AppLanguage.id: "Penempatan tokoh",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -405,7 +501,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "explicit_message",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Explicit Message"},
+        strings: {
+          AppLanguage.en: "Explicit Message",
+          AppLanguage.id: "Makna tersurat",
+        },
       ),
       description: TranslatedString(
         strings: {
@@ -419,7 +518,10 @@ class PaintingRepository {
     PointOfInterest(
       id: "implied_message",
       name: TranslatedString(
-        strings: {AppLanguage.en: "Implied Message"},
+        strings: {
+          AppLanguage.en: "Implied Message",
+          AppLanguage.id: "Makna Tersirat",
+        },
       ),
       description: TranslatedString(
         strings: {
