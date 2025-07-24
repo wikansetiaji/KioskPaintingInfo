@@ -113,7 +113,7 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "Depicted as submissive, head bowed and hands lowered — a symbol of surrender.",
+              "Depicted as submissive to the Dutch, with a bowed head and lowered hands, clear gestures of capitulation.",
           AppLanguage.id:
               "Diponegoro digambarkan tunduk dengan Belanda yang digambarkan dengan kepala tertunduk serta tangan ke bawah yang berarti menyerah",
         },
@@ -188,9 +188,9 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "Costumes are culturally inaccurate (resembling Arab attire), showing colonial neglect of local culture.",
+              "His attire is culturally inaccurate, resembling Arab garb, reflecting the orientalist lens of European painters who often conflated Eastern cultures and erased local identities.",
           AppLanguage.id:
-              "Busana kurang akurat, seperti Arab, menggambarkan budaya Indonesia yang sering diabaikan kolonialis",
+              "Busananya tidak akurat dan menyerupai kostum Arab, mencerminkan pandangan orientalis Eropa yang kerap menyamakan budaya Timur tanpa membedakan identitas lokal.",
         },
       ),
       x: 0.33896484375,
@@ -282,7 +282,7 @@ class PaintingRepository {
           AppLanguage.en:
               "Erases the fact that Diponegoro was deceived and arrested unfairly.",
           AppLanguage.id:
-              "Menghapus fakta bahwa Diponegoro ditipu dan ditangkap dengan licik",
+              "Mengaburkan fakta bahwa penangkapan Diponegoro terjadi melalui tipu daya, bukan perundingan setara.",
         },
       ),
       x: 0.5610260009765625,
@@ -380,7 +380,7 @@ class PaintingRepository {
           AppLanguage.en:
               "Smaller in scale, positioned on the left (symbolically weak in Javanese culture).",
           AppLanguage.id:
-              "Postur lebih kecil dan berlokasi di sisi kiri (secara simbolis lemah dalam budaya Jawa), menunjukkan tidak dominan",
+              "Posturnya lebih kecil dan ditempatkan di sisi kiri, posisi yang secara simbolis lebih rendah dalam budaya Jawa.",
         },
       ),
       x: 0.40419921875,
@@ -490,9 +490,9 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "Dutch figures on the left, Indonesians in the center — symbolizing Dutch weakness (in Javanese terms).",
+              "The Dutch are placed on the left and Diponegoro at the center, suggesting that the painting centers moral authority and national dignity on the Indonesian side.",
           AppLanguage.id:
-              "Belanda di kiri dan Indonesia di tengah, menunjukkan posisi lemah menurut simbolisme Jawa",
+              "Belanda berada di sisi kiri dan Diponegoro di tengah, menunjukkan bahwa tokoh utama dan pusat moral lukisan adalah Indonesia, bukan kolonial",
         },
       ),
       x: 0.2567474365234375,
@@ -528,7 +528,7 @@ class PaintingRepository {
           AppLanguage.en:
               "An early form of nationalism — uplifting Indonesian dignity through symbols and composition.",
           AppLanguage.id:
-              "Bentuk awal nasionalisme–mengangkat harga diri bangsa secara halus melalui simbol dan lukisan",
+              "Bentuk awal nasionalisme, mengangkat harga diri bangsa secara halus melalui simbol dan lukisan",
         },
       ),
       x: 0.325970458984375,
@@ -541,15 +541,15 @@ class PaintingRepository {
       title: TranslatedString(
         strings: {
           AppLanguage.en: "A European Perspective on the Java War",
-          AppLanguage.id: "Perspektif Eropa terhadap Perang Jawa",
+          AppLanguage.id: "Pieneman Tidak Pernah Datang ke Jawa",
         },
       ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "Nicolaas Pieneman never visited the Dutch East Indies, yet he was commissioned by King Willem III to commemorate the 'end' of the Java War through this iconic painting.",
+              "This 1835 painting was based on second-hand sources and imagination. Pieneman himself never visited the Dutch East Indies. He was commissioned by King Willem III to depict the end of the Java War through the lens of colonial victory.",
           AppLanguage.id:
-              "Nicolaas Pieneman tidak pernah mengunjungi Hindia Belanda, namun ia mendapat komisi dari Raja Willem III untuk memperingati 'berakhirnya' Perang Jawa melalui lukisan ikonik ini.",
+              "Lukisan tahun 1835 ini lahir dari sumber sekunder dan imajinasi. Pieneman sendiri tidak pernah mengunjungi Hindia Belanda. Ia menerima komisi dari Raja Willem III untuk menggambarkan berakhirnya Perang Jawa dalam bingkai kemenangan kolonial.",
         },
       ),
     ),
@@ -563,9 +563,9 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "In contrast to later interpretations, Pieneman depicted Diponegoro as calmly and honorably surrendering — a sign of mutual respect and 'civilized diplomacy' according to 19th-century Dutch ideals.",
+              "In contrast to later interpretations, Pieneman depicted Diponegoro as calmly and honorably surrendering — a sign of mutual respect and \"civilized diplomacy\" according to 19th-century Dutch ideals. This colonial perspective has since been widely questioned.",
           AppLanguage.id:
-              "Berbeda dengan interpretasi masa kini, Pieneman menggambarkan Pangeran Diponegoro menyerah dengan tenang dan terhormat — mencerminkan rasa saling menghormati dan 'diplomasi beradab' menurut pandangan Belanda abad ke-19.",
+              "Berbeda dengan interpretasi masa kini, Pieneman menggambarkan Pangeran Diponegoro menyerah dengan tenang dan terhormat — mencerminkan rasa saling menghormati dan \"diplomasi beradab\" menurut pandangan Belanda abad ke-19. Suatu sudut pandang kolonial yang kini banyak dipersoalkan.",
         },
       ),
     ),
@@ -588,16 +588,16 @@ class PaintingRepository {
     FunFact(
       title: TranslatedString(
         strings: {
-          AppLanguage.en: "Painted 22 Years After the Event",
-          AppLanguage.id: "Dilukis 22 Tahun Setelah Peristiwa",
+          AppLanguage.en: "Title of Pieneman’s Painting",
+          AppLanguage.id: "Judul Lukisan Pieneman",
         },
       ),
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "Completed in 1857, the painting was created over two decades after the actual arrest of Diponegoro in 1830 — based entirely on second-hand sources and imagination.",
+              "The painting is titled The Submission of Diepo Negoro to Lieutenant-General Hendrik Merkus Baron de Kock, 28 March 1830, which ended the Java War (1825–30)",
           AppLanguage.id:
-              "Diselesaikan pada tahun 1857, lukisan ini dibuat lebih dari dua dekade setelah penangkapan asli Pangeran Diponegoro pada tahun 1830 — seluruhnya berdasarkan sumber sekunder dan imajinasi.",
+              "Lukisan ini dalam bahasa Indonesia berjudul Penyerahan Pangeran Diponegoro kepada Letnan Jenderal Hendrik Merkus de Kock, tanggal 28 Maret 1830 yang mengakhiri Perang Diponegoro (1825-1830).",
         },
       ),
     ),
@@ -710,9 +710,9 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "More than a historical record, this painting is a political statement. Raden Saleh portrayed Diponegoro as a brave figure standing against colonial injustice.",
+              "Many interpreters view this painting as a symbol of anti-colonial resistance. Raden Saleh portrays Diponegoro as a dignified figure who stood against colonial injustice.",
           AppLanguage.id:
-              "Tidak sekadar dokumentasi sejarah, lukisan ini adalah pernyataan politik. Raden Saleh menempatkan Diponegoro sebagai tokoh pemberani yang melawan ketidakadilan kolonial.",
+              "Banyak penafsir melihat lukisan ini sebagai simbol perlawanan kolonial. Raden Saleh menempatkan Diponegoro sebagai tokoh bermartabat yang melawan ketidakadilan kolonial.",
         },
       ),
     ),
