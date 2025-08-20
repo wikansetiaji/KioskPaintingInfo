@@ -78,7 +78,7 @@ class PaintingRepository {
         strings: {
           AppLanguage.en: "Highlights General De Kock as noble and calm.",
           AppLanguage.id:
-              "Lukisan Nicolaas menonjolkan General De Kock yang digambarkan sebagai orang yang mulia dan tenang",
+              "Lukisan Nicolaas menonjolkan Jendral De Kock yang digambarkan sebagai orang yang mulia dan tenang.",
         },
       ),
       x: 0.5592193603515625,
@@ -323,7 +323,7 @@ class PaintingRepository {
           AppLanguage.en:
               "Highlights Prince Diponegoro as emotional yet dignified.",
           AppLanguage.id:
-              "Lukisan Raden Saleh menonjolkan Pangeran Diponegoro yang digambarkan sebagai orang yang emosional dan bermartabat",
+              "Lukisan Raden Saleh menonjolkan Pangeran Diponegoro yang digambarkan sebagai orang yang emosional dan bermartabat.",
         },
       ),
       x: 0.3578399658203125,
@@ -509,7 +509,7 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en: "An emotional arrest and betrayal.",
-          AppLanguage.id: "Penangkapan penuh emosi dan pnegkhianatan",
+          AppLanguage.id: "Penangkapan penuh emosi dan pengkhianatan",
         },
       ),
       x: 0.473004150390625,
@@ -595,7 +595,7 @@ class PaintingRepository {
       description: TranslatedString(
         strings: {
           AppLanguage.en:
-              "The painting is titled The Submission of Diepo Negoro to Lieutenant-General Hendrik Merkus Baron de Kock, 28 March 1830, which ended the Java War (1825–30)",
+              "The painting is titled The Submission of Diponegoro to Lieutenant-General Hendrik Merkus Baron de Kock, 28 March 1830, which ended the Java War (1825–30)",
           AppLanguage.id:
               "Lukisan ini dalam bahasa Indonesia berjudul Penyerahan Pangeran Diponegoro kepada Letnan Jenderal Hendrik Merkus de Kock, tanggal 28 Maret 1830 yang mengakhiri Perang Diponegoro (1825-1830).",
         },
