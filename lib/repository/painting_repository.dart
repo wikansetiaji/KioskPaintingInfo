@@ -613,7 +613,7 @@ class PaintingRepository {
           AppLanguage.en:
               "Diponegoro is shown standing with lowered posture, while De Kock sits confidently — a clear symbol of power dynamics, meant to show Dutch control over the native elite.",
           AppLanguage.id:
-              "Diponegoro digambarkan berdiri dengan postur merunduk, sementara De Kock duduk dengan percaya diri — simbol yang jelas dari dinamika kekuasaan, dimaksudkan untuk menunjukkan dominasi Belanda atas elite pribumi.",
+              "Diponegoro digambarkan berdiri dengan postur merunduk, sementara De Kock berdiri dengan percaya diri — simbol yang jelas dari dinamika kekuasaan, dimaksudkan untuk menunjukkan dominasi Belanda atas elite pribumi.",
         },
       ),
     ),

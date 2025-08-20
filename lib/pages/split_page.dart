@@ -237,9 +237,9 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                     name: TranslatedString(
                       strings: {
                         AppLanguage.en:
-                            "THE SUBMISSON OF PRINCE DIPONEGORO TO GENERAL DE KOCK",
+                            "THE SUBMISSION OF PRINCE DIPONEGORO TO GENERAL DE KOCK",
                         AppLanguage.id:
-                            "THE SUBMISSON OF PRINCE DIPONEGORO TO GENERAL DE KOCK",
+                            "THE SUBMISSION OF PRINCE DIPONEGORO TO GENERAL DE KOCK",
                       },
                     ),
                     uiOnRight: true,
@@ -454,7 +454,7 @@ class _SplitPageState extends State<SplitPage> with TickerProviderStateMixin {
                                       children: [
                                         Spacer(),
                                         Text(
-                                          "THE SUBMISSON OF PRINCE \nDIPONEGORO TO GENERAL DE KOCK\n(1835)",
+                                          "THE SUBMISSION OF PRINCE \nDIPONEGORO TO GENERAL DE KOCK\n(1835)",
                                           textAlign: TextAlign.right,
                                           style: TextStyle(
                                             fontSize: 80.sc,
